@@ -1,6 +1,148 @@
-<html>
-<head></head>
+<!DOCTYPE html>
+<html lang=“ru">
+<head>
+    <title>Главная страница</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+</head>
 <body>
-	<h1> Hello World!</h1>
+<div class="layout">
+    <nav class="menu main-menu">
+        <div class="company-name company-name-margin">
+            <div class="company-name__name">
+                <strong>Boldёж</strong>
+            </div>
+            <a class="company-name__unfold" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">
+                <img class="company-name__img" src="img/menu/left_arrow.svg" alt="свернуть">
+            </a>
+        </div>
+        <div class="menu__nav">
+            <div class="menu__item menu-item-margin menu-first-item">
+                <img class="menu__icon" src="img/menu/home.svg" alt=""/>
+                <div class="menu__description menu-description-margin">Главная</div>
+            </div>
+            <div class="menu__item menu-item-margin">
+                <img class="menu__icon" src="img/menu/calendar.svg" alt=""/>
+                <div class="menu__description menu-description-margin">Календарь</div>
+            </div>
+            <div class="menu__item menu-item-margin">
+                <img class="menu__icon" src="img/menu/people.svg" alt="">
+                <div class="menu__description menu-description-margin">Клиенты</div>
+            </div>
+            <div class="menu__item menu-item-margin">
+                <img class="menu__icon" src="img/menu/statistics.svg" alt="">
+                <div class="menu__description menu-description-margin">Статистика</div>
+            </div>
+            <div class="menu__item menu-item-margin">
+                <img class="menu__icon" src="img/menu/basket.svg" alt="">
+                <div class="menu__description menu-description-margin">Товары</div>
+            </div>
+            <div class="menu__item menu-item-margin">
+                <img class="menu__icon" src="img/menu/history.svg" alt="">
+                <div class="menu__description menu-description-margin">История</div>
+            </div>
+            <div class="menu__item menu-item-margin">
+                <img class="menu__icon" src="img/menu/settings.svg" alt="">
+                <div class="menu__description menu-description-margin">Настройки</div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="layout-content">
+        <header class="heading">
+            <img class="heading__logotype" src="img/heading/logo.png" alt="Логотип">
+            <div class="heading__profile profile-margin">
+                <div class="heading__profile-info">
+                    <div class="heading__profile-name">
+                        <strong>Миша Ганин</strong>
+                    </div>
+                    <div class="heading__profile-role">
+                        <em>Админ</em>
+                    </div>
+                </div>
+                <img class="heading__profile-pic" src="img/MishaGanin.png" alt="Фото профиля">
+                <img class="heading__profile-unfold" src="img/heading/arrow_down.svg" alt="Подробнее">
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="upcoming-events main-item">
+                <div class="upcoming-events__title events-title"><h2>Предстоящие события</h2></div>
+
+                <div class="event event-external">
+                    <div class="event__time">
+                        <div class="time-start">
+                            <b>
+                                <time datetime="2020-11-15T010:00">10:00</time>
+                            </b>
+                        </div>
+                        <div class="time-end">
+                            <b>
+                                <time datetime="2020-11-15T011:30">11:30</time>
+                            </b>
+                        </div>
+                    </div>
+                    <div class="event__description">
+                        <div class="event__event-name">Маникюр большого пальца левой руки</div>
+                        <div class="event__event-customer">
+                            <img class="event__pic" src="img/event/customer.svg" alt="Клиент">
+                            <div>Памела Андерсон</div>
+                        </div>
+
+                        <div class="event__event-customer">
+                            <img class="event__pic" src="img/event/assigner.svg" alt=Мастер>
+                            <div>Эмин Керимов</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event event-external">
+                    <div class="event__time">
+                        <div class="time-start">
+                            <b>
+                                <time datetime="2020-11-15T011:00">11:00</time>
+                            </b>
+                        </div>
+                        <div class="time-end">
+                            <b>
+                                <time datetime="2020-11-15T012:00">12:00</time>
+                            </b>
+                        </div>
+                    </div>
+                    <div class="event__description">
+                        <div class="event__event-name">Мелирование и глубокое тонирование</div>
+                        <div class="event__event-customer">
+                            <img class="event__pic" src="img/event/customer.svg" alt="Клиент">
+                            <div>Криштиану Роналду</div>
+                        </div>
+
+                        <div class="event__event-customer">
+                            <img class="event__pic" src="img/event/assigner.svg" alt=Мастер>
+                            <div>Влад Сергей</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="weekly-stats main-item">
+                <div class="weekly-stats__title">Недельная статистика</div>
+                <img class="weekly-stats-stats" src="img/WeekStat.png" alt="недельная статистика">
+            </section>
+
+            <section class="ending-products">
+                <div class="ending-products__title">Заканчивающиеся товары</div>
+            </section>
+
+        </main>
+
+        <footer class="footing">
+            <div class="footing__item cont">Контакты</div>
+            <div class="footing__item">Тех поддержка</div>
+            <div class="footing__item">Пользовательское соглашение</div>
+        </footer>
+    </div>
+</div>
 </body>
 </html>
