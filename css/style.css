@@ -89,6 +89,16 @@ body {
     justify-content: space-between;
 }
 
+.navigation-open {
+    display: none;
+    align-self: center;
+    margin: 0 0 0 30px;
+}
+.navigation-unfold {
+    width: 50px;
+    height: 50px;
+}
+
 .heading__profile {
     display: flex;
     height: 100%;
@@ -214,21 +224,30 @@ body {
 
 
 @media screen and (max-width: 700px) {
-    .menu__description {
-        visibility: collapse;
-    }
+    /*.menu__description {*/
+    /*    visibility: collapse;*/
+    /*}*/
 
-    .main-menu {
-        width: 60px;
+    .menu {
+        /*width: 60px;*/
+        display: none;
     }
 
     .company-name {
         visibility: collapse;
     }
-}
 
-@media screen and (max-width: 450px) {
     .heading__logotype {
         display: none;
     }
+
+    .navigation-open {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    /*.heading__logotype {*/
+    /*    display: none;*/
+    /*}*/
 }
