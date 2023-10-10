@@ -2,61 +2,74 @@
 <html lang=“ru">
 <head>
     <title>Главная страница</title>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
     <link href="css/style.css" rel="stylesheet">
+
+    <link href="css/common.blocks/menu.css" rel="stylesheet">
+    <link href="css/common.blocks/unfold-menu.css" rel="stylesheet">
+    <link href="css/common.blocks/heading.css" rel="stylesheet">
+
+    <link href="css/common.blocks/main-content/main-content.css" rel="stylesheet">
+    <link href="css/common.blocks/main-content/upcoming-events.css" rel="stylesheet">
+    <link href="css/common.blocks/main-content/event.css" rel="stylesheet">
+    <link href="css/common.blocks/main-content/weekly-stats.css" rel="stylesheet">
+
+    <link href="css/common.blocks/footing.css" rel="stylesheet">
+    <link href="css/common.blocks/contacts.css" rel="stylesheet">
+
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 </head>
 <body>
 <div class="layout">
-    <nav class="menu main-menu">
-        <div class="company-name company-name-margin">
-            <div class="company-name__name">
-                <strong>Boldёж</strong>
-            </div>
-            <a class="company-name__unfold" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">
-                <img class="company-name__img" src="img/menu/left_arrow.svg" alt="свернуть">
+    <nav class="menu menu__fold">
+        <div class="menu__company-name">
+            <strong>Boldёж</strong>
+            <a class="menu__fold-button" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">
+                <img class="menu__fold-image" src="img/menu/left_arrow.svg" alt="свернуть">
             </a>
         </div>
         <div class="menu__nav">
-            <div class="menu__item menu-item-margin menu-first-item">
-                <img class="menu__icon" src="img/menu/home.svg" alt=""/>
-                <div class="menu__description menu-description-margin">Главная</div>
+            <div class="menu__item menu__first-item">
+                <img class="menu__item-icon" src="img/menu/home.svg" alt=""/>
+                <div class="menu__description menu__description__margin">Главная</div>
             </div>
-            <div class="menu__item menu-item-margin">
-                <img class="menu__icon" src="img/menu/calendar.svg" alt=""/>
-                <div class="menu__description menu-description-margin">Календарь</div>
+            <div class="menu__item">
+                <img class="menu__item-icon" src="img/menu/calendar.svg" alt=""/>
+                <div class="menu__description menu__description__margin">Календарь</div>
             </div>
-            <div class="menu__item menu-item-margin">
-                <img class="menu__icon" src="img/menu/people.svg" alt="">
-                <div class="menu__description menu-description-margin">Клиенты</div>
+            <div class="menu__item">
+                <img class="menu__item-icon" src="img/menu/people.svg" alt="">
+                <div class="menu__description menu__description__margin">Клиенты</div>
             </div>
-            <div class="menu__item menu-item-margin">
-                <img class="menu__icon" src="img/menu/statistics.svg" alt="">
-                <div class="menu__description menu-description-margin">Статистика</div>
+            <div class="menu__item">
+                <img class="menu__item-icon" src="img/menu/statistics.svg" alt="">
+                <div class="menu__description menu__description__margin">Статистика</div>
             </div>
-            <div class="menu__item menu-item-margin">
-                <img class="menu__icon" src="img/menu/basket.svg" alt="">
-                <div class="menu__description menu-description-margin">Товары</div>
+            <div class="menu__item">
+                <img class="menu__item-icon" src="img/menu/basket.svg" alt="">
+                <div class="menu__description menu__description__margin">Товары</div>
             </div>
-            <div class="menu__item menu-item-margin">
-                <img class="menu__icon" src="img/menu/history.svg" alt="">
-                <div class="menu__description menu-description-margin">История</div>
+            <div class="menu__item">
+                <img class="menu__item-icon" src="img/menu/history.svg" alt="">
+                <div class="menu__description menu__description__margin">История</div>
             </div>
-            <div class="menu__item menu-item-margin">
-                <img class="menu__icon" src="img/menu/settings.svg" alt="">
-                <div class="menu__description menu-description-margin">Настройки</div>
+            <div class="menu__item">
+                <img class="menu__item-icon" src="img/menu/settings.svg" alt="">
+                <div class="menu__description menu__description__margin">Настройки</div>
             </div>
         </div>
     </nav>
 
     <div class="layout-content">
         <header class="heading">
-            <div class="navigation-open">
-                <img class="navigation-unfold" src="img/menu/navigation.svg" alt="Меню">
+            <div class="unfold-menu unfold-menu__margin unfold-menu__display">
+                <img class="unfold-menu__button" src="img/menu/navigation.svg" alt="Меню">
             </div>
-            <img class="heading__logotype" src="img/heading/logo.png" alt="Логотип">
-            <div class="heading__profile profile-margin">
+            <img class="heading__logotype heading__logotype__hide" src="img/heading/logo.png" alt="Логотип">
+            <div class="heading__profile heading__profile__margin">
                 <div class="heading__profile-info">
                     <div class="heading__profile-name">
                         <strong>Миша Ганин</strong>
@@ -66,22 +79,22 @@
                     </div>
                 </div>
                 <img class="heading__profile-pic" src="img/MishaGanin.png" alt="Фото профиля">
-                <img class="heading__profile-unfold" src="img/heading/arrow_down.svg" alt="Подробнее">
+                <img class="heading__unfold-button" src="img/heading/arrow_down.svg" alt="Подробнее">
             </div>
         </header>
 
         <main class="main-content">
             <section class="upcoming-events main-item">
-                <div class="upcoming-events__title events-title"><h2>Предстоящие события</h2></div>
+                <div class="upcoming-events__title upcoming-events__title__margin"><h2>Предстоящие события</h2></div>
 
-                <div class="event event-external">
+                <div class="event upcoming-events__event-margin">
                     <div class="event__time">
                         <div class="time-start">
                             <b>
                                 <time datetime="2020-11-15T010:00">10:00</time>
                             </b>
                         </div>
-                        <div class="time-end">
+                        <div class="event__time-end">
                             <b>
                                 <time datetime="2020-11-15T011:30">11:30</time>
                             </b>
@@ -101,7 +114,7 @@
                     </div>
                 </div>
 
-                <div class="event event-external">
+                <div class="event upcoming-events__event-margin">
                     <div class="event__time">
                         <div class="time-start">
                             <b>
@@ -130,9 +143,9 @@
             </section>
 
             <section class="weekly-stats main-item">
-                <div class="weekly-stats__title">Недельная статистика</div>
+                <div class="weekly-stats__title"><strong>Недельная статистика</strong></div>
                 <img class="weekly-stats__settings" src="img/stats/settings.svg" alt="настроки">
-                <img class="weekly-stats-stats" src="img/WeekStat.png" alt="недельная статистика">
+                <img class="weekly-stats__hist" src="img/WeekStat.png" alt="недельная статистика">
             </section>
 
             <!--            <section class="ending-products">-->
@@ -141,18 +154,20 @@
 
         </main>
 
-        <footer class="footing">
+        <footer class="footing footing__direction">
             <div class="footing__left">
-                <div class="footing__item contacts">
+                <div class="footing__item footing__item__margin contacts">
                     Контакты
                     <div class="contacts__items">
                         <img class="contacts__icon" src="img/footing/call.svg" alt="телефон">
                         <img class="contacts__icon" src="img/footing/email.svg" alt="email">
                     </div>
                 </div>
-                <div class="footing__item tech-support">Тех поддержка</div>
+                <div class="footing__item footing__item__margin footing__tech-support">Тех поддержка</div>
             </div>
-            <div class="footing__item user-agreement">Пользовательское соглашение</div>
+            <div class="footing__item footing__item__margin footing__agreement footing__agreement__centered">
+                Пользовательское соглашение
+            </div>
         </footer>
     </div>
 </div>

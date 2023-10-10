@@ -1,0 +1,63 @@
+.menu {
+    background-color: #d6d6d6;
+    border-right: 1px solid black;
+    min-height: 100vh;
+}
+
+.menu__company-name {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.875rem;
+    text-align: center;
+
+    justify-content: space-between;
+    width: 190px;
+    height: 140px;
+    margin: 20px 0 0 0;
+}
+
+.menu__fold-button {
+    position: absolute;
+    padding-top: 2px;
+    padding-left: 2px;
+    top: 135px;
+    left: 178px;
+    text-align: center;
+    background-color: #d6d6d6;
+    height: 32px;
+    width: 32px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.menu__fold-image {
+    width: 30px;
+    height: 30px;
+}
+
+.menu__item {
+    display: flex;
+    align-items: center;
+    font-family: 'Montserrat', serif;
+
+    margin: 35px 50px auto 13px;
+}
+
+.menu__first-item {
+    margin-top: 0!important;
+}
+
+.menu__item-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.menu__description__margin {
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 750px) {
+    .menu__fold {
+        display: none;
+    }
+}

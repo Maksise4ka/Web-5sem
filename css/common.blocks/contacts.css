@@ -1,0 +1,15 @@
+.contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contacts__items {
+    /*margin-right: 30px;*/
+    display: flex;
+}
+
+.contacts__icon {
+    height: 30px;
+    width: 30px;
+}

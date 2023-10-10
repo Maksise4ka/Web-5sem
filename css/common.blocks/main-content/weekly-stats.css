@@ -1,0 +1,31 @@
+.weekly-stats {
+    position: relative;
+    border: 1px solid black;
+    max-height: 400px;
+
+    flex: 0;
+    font-size: 1.5rem;
+}
+
+.weekly-stats__hist {
+    max-width: 75vw;
+}
+
+.weekly-stats__title {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.weekly-stats__settings {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    height: 30px;
+    width: 30px;
+}
+
+@media screen and (max-width: 500px) {
+    .weekly-stats {
+        font-size: 1rem;
+    }
+}

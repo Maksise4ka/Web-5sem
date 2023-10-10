@@ -1,0 +1,33 @@
+.upcoming-events {
+    background-color: #ebebeb;
+    border: 1px solid black;
+    overflow-y: scroll;
+
+    max-width: 30.5rem;
+    max-height: 37.5rem;
+    min-width: 27rem;
+}
+
+.upcoming-events__title__margin {
+    margin-left: 10px;
+    margin-top: -10px;
+}
+
+.upcoming-events__event-margin {
+    margin: 20px 35px 10px 35px;
+}
+
+@media screen and (max-width: 750px) {
+    .upcoming-events {
+        min-width: 25rem;
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    .upcoming-events {
+        max-width: 80vw;
+        font-size: 0.8rem;
+        min-width: 0;
+    }
+}
