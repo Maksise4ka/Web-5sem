@@ -1,22 +1,20 @@
 <!DOCTYPE html>
-<html lang=“ru">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>Главная страница</title>
-
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Settings</title>
 
     <link href="css/style.css" rel="stylesheet">
 
     <link href="css/common.blocks/menu/menu.css" rel="stylesheet">
-    <link href="css/common.blocks/menu/menu__fold.css" rel="stylesheet">
+    <link href="css/common.blocks/menu/menu__fold-settings.css" rel="stylesheet">
     <link href="css/common.blocks/unfold-menu.css" rel="stylesheet">
     <link href="css/common.blocks/heading.css" rel="stylesheet">
 
     <link href="css/common.blocks/main-content/main-content.css" rel="stylesheet">
-    <link href="css/common.blocks/main-content/upcoming-events.css" rel="stylesheet">
-    <link href="css/common.blocks/main-content/event.css" rel="stylesheet">
-    <link href="css/common.blocks/main-content/weekly-stats.css" rel="stylesheet">
+    <link href="css/common.blocks/main-content/settings.css" rel="stylesheet">
+    <link href="css/common.blocks/main-content/settings-navigation.css" rel="stylesheet">
 
     <link href="css/common.blocks/footing.css" rel="stylesheet">
     <link href="css/common.blocks/contacts.css" rel="stylesheet">
@@ -33,7 +31,7 @@
             <img class="menu__fold-image" src="img/menu/left_arrow.svg" alt="свернуть">
         </a>
         <div class="menu__nav">
-            <a class="menu__item menu__first-item menu__item__active" href="index.html">
+            <a class="menu__item menu__first-item" href="index.html">
                 <img class="menu__item-icon" src="img/menu/home.svg" alt=""/>
                 <div class="menu__description menu__description__margin">Главная</div>
             </a>
@@ -57,7 +55,7 @@
                 <img class="menu__item-icon" src="img/menu/history.svg" alt="">
                 <div class="menu__description menu__description__margin">История</div>
             </div>
-            <a class="menu__item" href="settings.html">
+            <a class="menu__item menu__item__active" href="settings.html">
                 <img class="menu__item-icon" src="img/menu/settings.svg" alt="">
                 <div class="menu__description menu__description__margin">Настройки</div>
             </a>
@@ -84,75 +82,45 @@
             </div>
         </header>
 
-        <main class="main-content main-content__direction">
-            <section class="upcoming-events main-item">
-                <div class="upcoming-events__title upcoming-events__title__margin"><h2>Предстоящие события</h2></div>
-
-                <div class="event upcoming-events__event-margin">
-                    <div class="event__time">
-                        <div class="time-start">
-                            <b>
-                                <time datetime="2020-11-15T010:00">10:00</time>
-                            </b>
-                        </div>
-                        <div class="event__time-end">
-                            <b>
-                                <time datetime="2020-11-15T011:30">11:30</time>
-                            </b>
+        <main class="main-content main-content__justify">
+            <section class="settings-navigation">
+                <div class="settings-navigation__item settings-navigation__first item__selected">Мой аккаунт</div>
+                <div class="settings-navigation__item">Пароль</div>
+                <div class="settings-navigation__item">Настройки компании</div>
+            </section>
+            <section class="settings settings__margin">
+                <div class="settings__title">
+                    <b>Мой аккаунт</b>
+                </div>
+                <div class="settings__content">
+                    <div class="settings__item">
+                        <div class="settings__form">
+                            <label class="settings__label" for="username">Имя пользователя</label>
+                            <input type="text" name="role" id="username" required class="settings__form-input"
+                                   value="mishaganin" disabled>
                         </div>
                     </div>
-                    <div class="event__description">
-                        <div class="event__event-name">Маникюр большого пальца левой руки</div>
-                        <div class="event__event-customer">
-                            <img class="event__pic" src="img/event/customer.svg" alt="Клиент">
-                            <div>Памела Андерсон</div>
+                    <div class="settings__item">
+                        <div class="settings__form">
+                            <label class="settings__label" for="email">Email</label>
+                            <input type="email" name="email" id="email" required class="settings__form-input"
+                                   value="gma-13@yandex.ru"/>
                         </div>
+                    </div>
+                    <div class="settings__item">
+                        <div class="settings__form">
+                            <label class="settings__label" for="role">Роль</label>
+                            <input type="text" name="role" id="role" required class="settings__form-input"
+                                   value="Администратор"/>
+                        </div>
+                    </div>
 
-                        <div class="event__event-customer">
-                            <img class="event__pic" src="img/event/assigner.svg" alt=Мастер>
-                            <div>Эмин Керимов</div>
-                        </div>
+                    <div class="settings__item">
+                        <input type="submit" class="settings__button" value="Подтвердить"/>
                     </div>
                 </div>
 
-                <div class="event upcoming-events__event-margin">
-                    <div class="event__time">
-                        <div class="time-start">
-                            <b>
-                                <time datetime="2020-11-15T011:00">11:00</time>
-                            </b>
-                        </div>
-                        <div class="time-end">
-                            <b>
-                                <time datetime="2020-11-15T012:00">12:00</time>
-                            </b>
-                        </div>
-                    </div>
-                    <div class="event__description">
-                        <div class="event__event-name">Мелирование и глубокое тонирование</div>
-                        <div class="event__event-customer">
-                            <img class="event__pic" src="img/event/customer.svg" alt="Клиент">
-                            <div>Криштиану Роналду</div>
-                        </div>
-
-                        <div class="event__event-customer">
-                            <img class="event__pic" src="img/event/assigner.svg" alt=Мастер>
-                            <div>Влад Сергей</div>
-                        </div>
-                    </div>
-                </div>
             </section>
-
-            <section class="weekly-stats main-item">
-                <div class="weekly-stats__title"><strong>Недельная статистика</strong></div>
-                <img class="weekly-stats__settings" src="img/stats/settings.svg" alt="настроки">
-                <img class="weekly-stats__hist" src="img/WeekStat.png" alt="недельная статистика">
-            </section>
-
-            <!--            <section class="ending-products">-->
-            <!--                <div class="ending-products__title">Заканчивающиеся товары</div>-->
-            <!--            </section>-->
-
         </main>
 
         <footer class="footing footing__direction">

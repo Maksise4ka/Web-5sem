@@ -12,7 +12,6 @@
     text-align: center;
 
     justify-content: space-between;
-    /*width: 190px;*/
     height: 140px;
     margin: 20px 0 0 0;
 }
@@ -48,8 +47,8 @@
 
     width: 10rem;
     height: 2.5rem;
-    margin: 1.5rem 15px 0 13px;
-    padding-left: 3px;
+    margin: 1.5rem 15px 0 8px;
+    padding-left: 15px;
 }
 
 .menu__item:hover {
@@ -72,10 +71,4 @@
 
 .menu__description__margin {
     margin-left: 10px;
-}
-
-@media screen and (max-width: 46.875rem) {
-    .menu__fold {
-        display: none;
-    }
 }

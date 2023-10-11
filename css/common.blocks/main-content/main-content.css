@@ -10,7 +10,7 @@
 }
 
 @media screen and (max-width: 750px) {
-    .main-content {
+    .main-content__direction {
         justify-content: space-around;
         flex-direction: column;
         align-content: center;
