@@ -37,9 +37,13 @@
     max-height: 70%;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 46.875rem) {
     .heading__logotype__hide {
         display: none;
+    }
+
+    .unfold-menu__display {
+        display: block;
     }
 }
 

@@ -3,6 +3,7 @@
     border: 1px solid black;
     border-radius: 19px;
     display: flex;
+    /*max-width: 20rem;*/
 }
 
 .event__time {
@@ -19,8 +20,8 @@
 
 .event__pic {
     margin-right: 10px;
-    height: 30px;
-    width: 30px;
+    height: 1.875rem;
+    width: 1.875rem;
 }
 
 .event__description {
