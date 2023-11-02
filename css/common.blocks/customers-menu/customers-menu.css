@@ -1,0 +1,65 @@
+.customers-menu {
+    margin: 40px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 90%;
+}
+
+.customers-menu__navigation {
+    display: flex;
+}
+
+.customers-menu__add-button {
+    width: 178px;
+    height: 60px;
+    border-radius: 15px;
+    border: 1px solid black;
+    background-color: #ebebeb;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.customers-menu__find-label {
+    display: flex;
+    flex: 1;
+    height: 30px;
+    margin: 0 20px 0 20px;
+    align-self: stretch;
+}
+
+.customers-menu__find {
+    flex: 1;
+    font-family: inherit;
+    padding-left: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.customers-menu__find-button {
+    margin-left: 20px;
+    font-family: inherit;
+    border-radius: 10px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.customers-menu__content {
+    flex: 1;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    justify-content: space-around;
+    box-sizing: border-box;
+}
+
+.customer {
+    margin: 10px;
+}
+
+.pagination-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

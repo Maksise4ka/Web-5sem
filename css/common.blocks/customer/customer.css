@@ -1,0 +1,38 @@
+.customer {
+    border: 2px solid black;
+    display: flex;
+    word-break: break-word;
+}
+
+.customer__photo {
+    margin: 0 15px 0 10px;
+    width: 88px;
+    height: 88px;
+    border-radius: 26px;
+}
+
+.customer__info {
+    margin: 0 20px 0 0;
+}
+
+.customer__name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+}
+
+.customer__top {
+    margin-top: 10px;
+}
+
+.customer__contact {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.customer__icon {
+    margin-right: 10px;
+    height: 24px;
+    width: 23px;
+}

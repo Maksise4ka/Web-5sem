@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Клиенты</title>
+
+    <link href="css/style.css" rel="stylesheet">
+
+    <link href="css/common.blocks/menu/menu.css" rel="stylesheet">
+    <link href="css/common.blocks/menu/menu__fold.css" rel="stylesheet">
+    <link href="css/common.blocks/unfold-menu/unfold-menu.css" rel="stylesheet">
+    <link href="css/common.blocks/heading.css" rel="stylesheet">
+
+    <link href="css/common.blocks/main-content/main-content.css" rel="stylesheet">
+    <link href="css/common.blocks/customers-menu/customers-menu.css" rel="stylesheet">
+    <link href="css/common.blocks/customer/customer.css" rel="stylesheet">
+    <link href="css/common.blocks/customers-menu/customers-menu__grid.css" rel="stylesheet">
+    <link href="css/common.blocks/pagination/pagination.css" rel="stylesheet">
+    <link href="css/common.blocks/pagination/pagination__delete-last.css" rel="stylesheet">
+
+    <link href="css/common.blocks/footing.css" rel="stylesheet">
+    <link href="css/common.blocks/contacts.css" rel="stylesheet">
+
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+</head>
+<body>
+<div class="layout">
+    <nav class="menu menu__fold">
+        <div class="menu__company-name">
+            <strong>Boldёж</strong>
+        </div>
+        <a class="menu__fold-button" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">
+            <img class="menu__fold-image" src="img/menu/left_arrow.svg" alt="свернуть">
+        </a>
+        <div class="menu__nav">
+            <a class="menu__item menu__first-item" href="index.html">
+                <img class="menu__item-icon" src="img/menu/home.svg" alt=""/>
+                <div class="menu__description menu__description__margin">Главная</div>
+            </a>
+            <a class="menu__item">
+                <img class="menu__item-icon" src="img/menu/calendar.svg" alt=""/>
+                <div class="menu__description menu__description__margin">Календарь</div>
+            </a>
+            <a class="menu__item menu__item__active" href="customers.html">
+                <img class="menu__item-icon" src="img/menu/people.svg" alt="">
+                <div class="menu__description menu__description__margin">Клиенты</div>
+            </a>
+            <div class="menu__item">
+                <img class="menu__item-icon" src="img/menu/statistics.svg" alt="">
+                <div class="menu__description menu__description__margin">Статистика</div>
+            </div>
+            <div class="menu__item">
+                <img class="menu__item-icon" src="img/menu/basket.svg" alt="">
+                <div class="menu__description menu__description__margin">Товары</div>
+            </div>
+            <div class="menu__item">
+                <img class="menu__item-icon" src="img/menu/history.svg" alt="">
+                <div class="menu__description menu__description__margin">История</div>
+            </div>
+            <a class="menu__item" href="settings.html">
+                <img class="menu__item-icon" src="img/menu/settings.svg" alt="">
+                <div class="menu__description menu__description__margin">Настройки</div>
+            </a>
+        </div>
+    </nav>
+
+    <div class="layout-content">
+        <header class="heading">
+            <div class="unfold-menu unfold-menu__margin unfold-menu__display">
+                <img class="unfold-menu__button" src="img/menu/navigation.svg" alt="Меню">
+            </div>
+            <img class="heading__logotype heading__logotype__hide" src="img/heading/logo.png" alt="Логотип">
+            <div class="heading__profile heading__profile__margin">
+                <div class="heading__profile-info">
+                    <div class="heading__profile-name">
+                        <strong>Миша Ганин</strong>
+                    </div>
+                    <div class="heading__profile-role">
+                        <em>Админ</em>
+                    </div>
+                </div>
+                <img class="heading__profile-pic" src="img/MishaGanin.png" alt="Фото профиля">
+                <img class="heading__unfold-button" src="img/heading/arrow_down.svg" alt="Подробнее">
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="customers-menu">
+                <div class="customers-menu__navigation customers-menu__navigation__grid">
+                    <input type="submit" class="customers-menu__add-button customers-menu__add-button__grid"
+                           value="Добавить клиента"/>
+                    <label class="customers-menu__find-label customers-menu__find-label__grid">
+                        <input type="text" placeholder="Поиск по Ф.И.О., номеру телефона, email"
+                               class="customers-menu__find"/>
+
+                        <button type="button" class="customers-menu__find-button">
+                            Поиск
+                        </button>
+                    </label>
+                </div>
+                <div class="customers-menu__content customers-menu__content__grid">
+                    <div class="customer customer__grid">
+                        <img class="customer__photo customer__top" src="img/customer/untitled.jpeg" alt="фото">
+                        <div class="customer__info customer__top">
+                            <div class="customer__name">
+                                Памела Андерсон
+                            </div>
+                            <div class="customer__contact customer__contact__grid customer__first-contact">
+                                <img class="customer__icon" src="img/customer/phone.svg" alt="">
+                                +7-800-555-35-35
+                            </div>
+                            <div class="customer__contact customer__contact__grid">
+                                <img class="customer__icon" src="img/customer/email.svg" alt="">
+                                pomello@mail.ru
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="customer customer__grid">
+                        <img class="customer__photo customer__top" src="img/customer/untitled.jpeg" alt="фото">
+                        <div class="customer__info customer__top">
+                            <div class="customer__name">
+                                Криштиану Роналду
+                            </div>
+                            <div class="customer__contact customer__contact__grid customer__first-contact">
+                                <img class="customer__icon" src="img/customer/phone.svg" alt="">
+                                не указан
+                            </div>
+                            <div class="customer__contact customer__contact__grid">
+                                <img class="customer__icon" src="img/customer/email.svg" alt="">
+                                cr7@inbox.ru
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="customer customer__grid">
+                        <img class="customer__photo customer__top" src="img/customer/untitled.jpeg" alt="фото">
+                        <div class="customer__info customer__top">
+                            <div class="customer__name">
+                                Райан Гослинг Артемович
+                            </div>
+                            <div class="customer__contact customer__contact__grid customer__first-contact">
+                                <img class="customer__icon" src="img/customer/phone.svg" alt="">
+                                +7-800-555-35-35
+                            </div>
+                            <div class="customer__contact customer__contact__grid">
+                                <img class="customer__icon" src="img/customer/email.svg" alt="">
+                                barbie_is_garbage@gmail.com
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="customer customer__grid">
+                        <img class="customer__photo customer__top" src="img/customer/untitled.jpeg" alt="фото">
+                        <div class="customer__info customer__top">
+                            <div class="customer__name">
+                                Райан Гослинг Артемович
+                            </div>
+                            <div class="customer__contact customer__contact__grid customer__first-contact">
+                                <img class="customer__icon" src="img/customer/phone.svg" alt="">
+                                +7-800-555-35-35
+                            </div>
+                            <div class="customer__contact customer__contact__grid">
+                                <img class="customer__icon" src="img/customer/email.svg" alt="">
+                                barbie_is_garbage@gmail.com
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pagination">
+                    <ul class="pagination-list">
+                        <li class="pagination__item">1</li>
+                        <li class="pagination__item pagination__item__active">2</li>
+                        <li class="pagination__item">3</li>
+                        <li class="pagination__item">4</li>
+                        <li class="pagination__item pagination__last-neighbour">5</li>
+                        <li class="pagination__item">...</li>
+                        <li class="pagination__item">20</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footing footing__direction">
+            <div class="footing__left">
+                <div class="footing__item footing__item__margin contacts">
+                    Контакты
+                    <div class="contacts__items">
+                        <img class="contacts__icon" src="img/footing/call.svg" alt="телефон">
+                        <img class="contacts__icon" src="img/footing/email.svg" alt="email">
+                    </div>
+                </div>
+                <div class="footing__item footing__item__margin footing__tech-support">Тех поддержка</div>
+            </div>
+            <div class="footing__item footing__item__margin footing__agreement footing__agreement__centered">
+                Пользовательское соглашение
+            </div>
+        </footer>
+    </div>
+</div>
+</body>
+</html>
