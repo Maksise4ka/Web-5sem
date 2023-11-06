@@ -34,10 +34,19 @@
     text-align: right;
 }
 
-@media screen and (max-width: 500px) {
+.footing_page-load {
+    margin-left: 20px;
+    align-self: center;
+}
+
+@media screen and (max-width: 550px) {
     .footing__direction, .footing__left {
         flex-direction: column;
         align-content: center;
+    }
+
+    .footing__item {
+        margin-top: 10px
     }
 
     .footing__agreement__centered {
