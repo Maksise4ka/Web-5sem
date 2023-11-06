@@ -1,4 +1,5 @@
 .unfold-menu {
+    cursor: pointer;
     display: none;
     align-self: center;
 }

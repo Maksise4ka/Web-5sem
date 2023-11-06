@@ -2,4 +2,12 @@
     .menu__fold {
         display: none;
     }
+
+    .heading__logotype__hide {
+        display: none;
+    }
+
+    .unfold-menu {
+        display: block;
+    }
 }
