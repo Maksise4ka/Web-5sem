@@ -17,6 +17,7 @@
 }
 
 .footing__tech-support {
+    cursor: pointer;
     padding: 6px;
     align-self: center;
     text-align: center;

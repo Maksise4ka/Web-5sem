@@ -8,9 +8,9 @@
     <link href="css/style.css" rel="stylesheet">
 
     <link href="css/common.blocks/menu/menu.css" rel="stylesheet">
-    <link href="css/common.blocks/menu/menu__fold.css" rel="stylesheet">
     <link href="css/common.blocks/unfold-menu/unfold-menu.css" rel="stylesheet">
-    <link href="css/common.blocks/heading.css" rel="stylesheet">
+    <link href="css/common.blocks/heading/heading.css" rel="stylesheet">
+    <link href="css/common.blocks/menu/menu__fold.css" rel="stylesheet">
 
     <link href="css/common.blocks/main-content/main-content.css" rel="stylesheet">
     <link href="css/common.blocks/customers-menu/customers-menu.css" rel="stylesheet">
@@ -25,14 +25,21 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 </head>
 <body>
+<script src="css/common.blocks/menu/fold-menu.js"></script>
+<script src="css/common.blocks/heading/show_dropdown.js"></script>
 <div class="layout">
-    <nav class="menu menu__fold">
+    <nav class="menu menu__fold" id="menu">
         <div class="menu__company-name">
-            <strong>Boldёж</strong>
+            <strong id="content">Boldёж</strong>
         </div>
-        <a class="menu__fold-button" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">
+        <a class="menu__fold-button display-button" onclick="foldMenu()" id="fold-menu">
             <img class="menu__fold-image" src="img/menu/left_arrow.svg" alt="свернуть">
         </a>
+
+        <a class="menu__fold-button" onclick="foldMenu()" id="unfold-menu">
+            <img class="menu__fold-image" src="img/menu/right_arrow.svg" alt="развернуть">
+        </a>
+
         <div class="menu__nav">
             <a class="menu__item menu__first-item" href="index.html">
                 <img class="menu__item-icon" src="img/menu/home.svg" alt=""/>
@@ -42,9 +49,9 @@
                 <img class="menu__item-icon" src="img/menu/calendar.svg" alt=""/>
                 <div class="menu__description menu__description__margin">Календарь</div>
             </a>
-            <a class="menu__item menu__item__active" href="customers.html">
+            <a class="menu__item" href="customers.html">
                 <img class="menu__item-icon" src="img/menu/people.svg" alt="">
-                <div class="menu__description menu__description__margin">Клиенты</div>
+                <div class="menu__description menu__description__margin menu__item__active">Клиенты</div>
             </a>
             <div class="menu__item">
                 <img class="menu__item-icon" src="img/menu/statistics.svg" alt="">
@@ -66,18 +73,32 @@
             <div class="unfold-menu unfold-menu__margin unfold-menu__display">
                 <img class="unfold-menu__button" src="img/menu/navigation.svg" alt="Меню">
             </div>
-            <img class="heading__logotype heading__logotype__hide" src="img/heading/logo.png" alt="Логотип">
-            <div class="heading__profile heading__profile__margin">
-                <div class="heading__profile-info">
-                    <div class="heading__profile-name">
-                        <strong>Миша Ганин</strong>
+            <a href="index.html" class="heading__logotype heading__logotype__hide">
+                <img class="heading__logotype-img" src="img/heading/logo.png" alt="Логотип">
+            </a>
+            <div class="heading__profile-layout">
+                <div class="heading__profile" onclick="showDropdown()">
+                    <div class="heading__profile-info">
+                        <div class="heading__profile-name">
+                            <strong>Миша Ганин</strong>
+                        </div>
+                        <div class="heading__profile-role">
+                            <em>Админ</em>
+                        </div>
                     </div>
-                    <div class="heading__profile-role">
-                        <em>Админ</em>
-                    </div>
+                    <img class="heading__profile-pic" src="img/heading/MishaGanin.png" alt="Фото профиля">
+                    <img class="heading__unfold-button" src="img/heading/arrow_down.svg" alt="Подробнее">
                 </div>
-                <img class="heading__profile-pic" src="img/MishaGanin.png" alt="Фото профиля">
-                <img class="heading__unfold-button" src="img/heading/arrow_down.svg" alt="Подробнее">
+                <div class="heading__dropdown">
+                    <a class="heading__dropdown-item">
+                        <div>
+                            <img class="heading__dropdown-pic" src="img/heading/exit.svg" alt="Выход"/>
+                        </div>
+                        <div class="heading__dropdown-item-name">
+                            Выход
+                        </div>
+                    </a>
+                </div>
             </div>
         </header>
 
@@ -169,7 +190,7 @@
                         <li class="pagination__item">1</li>
                         <li class="pagination__item pagination__item__active">2</li>
                         <li class="pagination__item">3</li>
-                        <li class="pagination__item">4</li>
+                        <li class="pagination__item pagination__last-neighbour">4</li>
                         <li class="pagination__item pagination__last-neighbour">5</li>
                         <li class="pagination__item">...</li>
                         <li class="pagination__item">20</li>
