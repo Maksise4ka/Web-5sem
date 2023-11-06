@@ -52,10 +52,6 @@
     word-break: break-word;
 }
 
-.menu__description__collapse {
-    display: none;
-}
-
 .display-none {
     display: none;
 }
@@ -67,7 +63,7 @@
 
 .heading__dropdown {
     z-index: 1000;
-    left: 5px;
+    left: 5%;
     position: absolute;
 
     width: 90%;
