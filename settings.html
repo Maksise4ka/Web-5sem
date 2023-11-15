@@ -8,9 +8,12 @@
     <link href="css/style.css" rel="stylesheet">
 
     <link href="css/common.blocks/menu/menu.css" rel="stylesheet">
-    <link href="css/common.blocks/unfold-menu/unfold-menu.css" rel="stylesheet">
-    <link href="css/common.blocks/heading/heading.css" rel="stylesheet">
+    <link href="css/common.blocks/unfold-menu/unfold-button.css" rel="stylesheet">
+    <link href="css/common.blocks/menu/menu__collapse.css" rel="stylesheet">
     <link href="css/common.blocks/menu/menu__fold.css" rel="stylesheet">
+    <link href="css/common.blocks/unfold-menu/menu__unfold.css" rel="stylesheet">
+
+    <link href="css/common.blocks/heading/heading.css" rel="stylesheet">
 
     <link href="css/common.blocks/main-content/main-content.css" rel="stylesheet">
     <link href="css/common.blocks/main-content/settings.css" rel="stylesheet">
@@ -20,54 +23,56 @@
     <link href="css/common.blocks/contacts.css" rel="stylesheet">
 
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+    <script src="css/common.blocks/menu/collapse-menu.js"></script>
+    <script src="css/common.blocks/heading/show_dropdown.js"></script>
+    <script src="css/common.blocks/unfold-menu/unfold-menu.js"></script>
 </head>
 <body>
-<script src="css/common.blocks/menu/fold-menu.js"></script>
-<script src="css/common.blocks/heading/show_dropdown.js"></script>
 <div class="layout">
     <nav class="menu menu__fold" id="menu">
         <div class="menu__company-name">
             <strong id="content">Boldёж</strong>
         </div>
-        <a class="menu__fold-button display-button" onclick="foldMenu()" id="fold-menu">
-            <img class="menu__fold-image" src="img/menu/left_arrow.svg" alt="свернуть">
+        <a class="menu__collapse-button display-button" onclick="collapseMenu()" id="fold-menu">
+            <img class="menu__collapse-icon" src="img/menu/left_arrow.svg" alt="свернуть">
         </a>
 
-        <a class="menu__fold-button" onclick="foldMenu()" id="unfold-menu">
-            <img class="menu__fold-image" src="img/menu/right_arrow.svg" alt="развернуть">
+        <a class="menu__collapse-button" onclick="collapseMenu()" id="unfold-menu">
+            <img class="menu__collapse-icon" src="img/menu/right_arrow.svg" alt="развернуть">
         </a>
 
         <div class="menu__nav">
             <a class="menu__item menu__first-item" href="index.html">
-                <img class="menu__item-icon" src="img/menu/home.svg" alt=""/>
-                <div class="menu__item-description">Главная</div>
+                <img class="menu__item-icon menu__item-icon__fold" src="img/menu/home.svg" alt=""/>
+                <div class="menu__item-description menu__item-description__fold">Главная</div>
             </a>
             <a class="menu__item">
-                <img class="menu__item-icon" src="img/menu/calendar.svg" alt=""/>
-                <div class="menu__item-description">Календарь</div>
+                <img class="menu__item-icon menu__item-icon__fold" src="img/menu/calendar.svg" alt=""/>
+                <div class="menu__item-description menu__item-description__fold">Календарь</div>
             </a>
             <a class="menu__item" href="customers.html">
-                <img class="menu__item-icon" src="img/menu/people.svg" alt="">
-                <div class="menu__item-description">Клиенты</div>
+                <img class="menu__item-icon menu__item-icon__fold" src="img/menu/people.svg" alt="">
+                <div class="menu__item-description menu__item-description__fold">Клиенты</div>
             </a>
             <a class="menu__item">
-                <img class="menu__item-icon" src="img/menu/statistics.svg" alt="">
-                <div class="menu__item-description">Статистика</div>
+                <img class="menu__item-icon menu__item-icon__fold" src="img/menu/statistics.svg" alt="">
+                <div class="menu__item-description menu__item-description__fold">Статистика</div>
             </a>
             <a class="menu__item">
-                <img class="menu__item-icon" src="img/menu/history.svg" alt="">
-                <div class="menu__item-description">История</div>
+                <img class="menu__item-icon menu__item-icon__fold" src="img/menu/history.svg" alt="">
+                <div class="menu__item-description menu__item-description__fold">История</div>
             </a>
             <a class="menu__item" href="settings.html">
-                <img class="menu__item-icon" src="img/menu/settings.svg" alt="">
-                <div class="menu__item-description">Настройки</div>
+                <img class="menu__item-icon menu__item-icon__fold" src="img/menu/settings.svg" alt="">
+                <div class="menu__item-description menu__item-description__fold">Настройки</div>
             </a>
         </div>
     </nav>
 
     <div class="layout-content">
         <header class="heading">
-            <div class="unfold-menu unfold-menu__margin unfold-menu__display">
+            <div class="unfold-button unfold-button__margin" onclick="unfoldMenu()">
                 <img class="unfold-menu__button" src="img/menu/navigation.svg" alt="Меню">
             </div>
             <a href="index.html" class="heading__logotype heading__logotype__hide">
@@ -145,18 +150,28 @@
                 <div class="footing__item footing__item__margin contacts">
                     Контакты
                     <div class="contacts__items">
-                        <img class="contacts__icon" src="img/footing/call.svg" alt="телефон">
-                        <img class="contacts__icon" src="img/footing/email.svg" alt="email">
+                        <a href="tel:+7 (777) 777-77-77">
+                            <img class="contacts__icon" src="img/footing/call.svg" alt="телефон">
+                        </a>
+                        <a href="mailto:for_maxim@bk.ru">
+                            <img class="contacts__icon" src="img/footing/email.svg" alt="email">
+                        </a>
                     </div>
                 </div>
-                <div class="footing__item footing__item__margin footing__tech-support">Тех поддержка</div>
+                <div class="footing__item footing__item__margin footing__tech-support">
+                    Тех поддержка
+                </div>
+                <div class="footing__item footing_page-load" id="page-load"></div>
             </div>
             <div class="footing__item footing__item__margin footing__agreement footing__agreement__centered">
                 Пользовательское соглашение
             </div>
         </footer>
     </div>
+
+    <div class="layout-overlay"></div>
 </div>
 <script src="css/common.blocks/menu/activate-menu-item.js"></script>
+<script src="css/common.blocks/footing/load-time.js"></script>
 </body>
 </html>

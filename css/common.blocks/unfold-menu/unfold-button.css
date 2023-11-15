@@ -1,0 +1,22 @@
+.unfold-button {
+    cursor: pointer;
+    display: none;
+    align-self: center;
+
+    width: 40px;
+    height: 40px;
+}
+
+.unfold-button__margin {
+    margin: 0 0 0 20px;
+}
+
+.unfold-menu__button {
+    width: 100%;
+    height: 100%;
+}
+
+.unfold-button:hover {
+    background-color: #ebebeb;
+    border-radius: 10px;
+}

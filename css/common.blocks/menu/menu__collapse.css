@@ -1,0 +1,17 @@
+.menu__item-icon__collapse {
+    padding-right: 10px;
+}
+
+.menu__item-description {
+    overflow: hidden;
+    margin-left: 10px;
+    padding-right: 10px;
+}
+
+.menu__description__collapse {
+    display: none;
+}
+
+.menu__collapse {
+    width: 68px;
+}

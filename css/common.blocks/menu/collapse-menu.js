@@ -1,4 +1,4 @@
-function foldMenu() {
+function collapseMenu() {
     document.getElementById("content").classList.toggle("display-none")
     document.getElementById("menu").classList.toggle("menu__collapse")
 

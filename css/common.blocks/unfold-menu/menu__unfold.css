@@ -1,0 +1,39 @@
+.menu__unfold {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    display: block;
+    z-index: 1000;
+}
+
+.menu-nav__unfold {
+    position: absolute;
+    top: 4rem;
+    width: 100%;
+    bottom: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.layout__background {
+    position: fixed;
+    right: 0;
+    overflow: hidden;
+}
+
+.layout-overlay {
+    z-index: 999;
+    background: #333;
+    cursor: pointer;
+    display: none;
+    height: 100%!important;
+    left: 0;
+    right: 0;
+    top: 0;
+    opacity: .5;
+    position: fixed;
+}
+
+.layout-overlay__display {
+    display: block;
+}

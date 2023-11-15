@@ -1,5 +1,17 @@
 @media screen and (max-width: 46.875rem) {
     .menu__fold {
+        width: 0;
+    }
+
+    .menu__collapse-button {
+        display: none;
+    }
+
+    .menu__item-icon__fold {
+        display: none;
+    }
+
+    .menu__item-description__fold {
         display: none;
     }
 
@@ -7,7 +19,14 @@
         display: none;
     }
 
-    .unfold-menu {
+    .unfold-button {
         display: block;
+    }
+}
+
+@media screen and (min-width: 46.875rem) {
+    .menu__unfold-disable {
+        position: relative;
+        z-index: 1;
     }
 }

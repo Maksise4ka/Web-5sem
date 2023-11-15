@@ -20,7 +20,7 @@
     margin: 20px 0 0 0;
 }
 
-.menu__fold-button {
+.menu__collapse-button {
     cursor: pointer;
     position: absolute;
     display: none;
@@ -36,7 +36,7 @@
     border-radius: 50%;
 }
 
-.menu__fold-button:hover {
+.menu__collapse-button:hover {
     background-color: #c3c3c3;
 }
 
@@ -44,7 +44,7 @@
     display: block;
 }
 
-.menu__fold-image {
+.menu__collapse-icon {
     width: 30px;
     height: 30px;
 
@@ -81,22 +81,4 @@
     width: 1.875rem;
     height: 1.875rem;
     padding-left: 10px;
-}
-
-.menu__item-icon__collapse {
-    padding-right: 10px;
-}
-
-.menu__item-description {
-    overflow: hidden;
-    margin-left: 10px;
-    padding-right: 10px;
-}
-
-.menu__description__collapse {
-    display: none;
-}
-
-.menu__collapse {
-    width: 68px;
 }
