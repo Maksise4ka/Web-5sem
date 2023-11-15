@@ -19,10 +19,16 @@
 .footing__tech-support {
     cursor: pointer;
     padding: 6px;
+    text-decoration: none;
     align-self: center;
     text-align: center;
     border-radius: 10px;
     border: 2px solid white;
+    -webkit-user-select: none;
+}
+
+.footing__tech-support:hover {
+    background-color: #373945;
 }
 
 .footing__agreement {

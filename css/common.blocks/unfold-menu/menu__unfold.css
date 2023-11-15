@@ -23,7 +23,7 @@
 
 .layout-overlay {
     z-index: 999;
-    background: #333;
+    background: #0b0b0b;
     cursor: pointer;
     display: none;
     height: 100%!important;

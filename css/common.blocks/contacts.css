@@ -5,11 +5,15 @@
 }
 
 .contacts__items {
-    /*margin-right: 30px;*/
     display: flex;
+}
+
+.contacts__icon:hover {
+    background-color: #373945;
 }
 
 .contacts__icon {
     height: 30px;
     width: 30px;
+    border-radius: 10px;
 }

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <title>Техническая поддержа</title>
+
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Настройки</title>
 
     <link href="css/style.css" rel="stylesheet">
 
@@ -16,8 +17,7 @@
     <link href="css/common.blocks/heading/heading.css" rel="stylesheet">
 
     <link href="css/common.blocks/main-content/main-content.css" rel="stylesheet">
-    <link href="css/common.blocks/main-content/settings.css" rel="stylesheet">
-    <link href="css/common.blocks/main-content/settings-navigation.css" rel="stylesheet">
+    <link href="css/common.blocks/support-contact/support-contact.css" rel="stylesheet">
 
     <link href="css/common.blocks/footing/footing.css" rel="stylesheet">
     <link href="css/common.blocks/contacts.css" rel="stylesheet">
@@ -104,17 +104,10 @@
             </div>
         </header>
 
-        <main class="main-content main-content__justify">
-            <section class="settings-navigation">
-                <div class="settings-navigation__item settings-navigation__first item__selected">Мой аккаунт</div>
-                <div class="settings-navigation__item">Пароль</div>
-                <div class="settings-navigation__item">Настройки компании</div>
-            </section>
-            <section class="settings settings__margin">
-                <div class="settings__title">
-                    <b>Мой аккаунт</b>
-                </div>
-                <div class="settings__content">
+        <main class="main-content main-content main-content__direction">
+            <section class="support-contact">
+                <div class="support-contact__title">Связаться с технической поддержкой</div>
+                <div class="support-contact__content">
                     <div class="settings__item">
                         <div class="settings__form">
                             <label class="settings__label" for="username">Имя пользователя</label>
@@ -126,20 +119,22 @@
                         <div class="settings__form">
                             <label class="settings__label" for="email">Email</label>
                             <input type="email" name="email" id="email" required class="settings__form-input"
-                                   value="gma-13@yandex.ru"/>
+                                   value="gma-13@yandex.ru" disabled/>
                         </div>
                     </div>
                     <div class="settings__item">
                         <div class="settings__form">
-                            <label class="settings__label" for="role">Роль</label>
-                            <input type="text" name="role" id="role" required class="settings__form-input"
-                                   value="Администратор"/>
+                            <label class="settings__label" for="theme">Тема</label>
+                            <input type="text" name="role" id="theme" required class="settings__form-input">
                         </div>
                     </div>
-
                     <div class="settings__item">
-                        <input type="submit" class="settings__button" value="Подтвердить"/>
+                        <div class="settings__form">
+                            <label class="settings__label" for="message">Сообщение</label>
+                            <textarea id="message" required class="settings__form-input"></textarea>
+                        </div>
                     </div>
+                    <input type="submit" class="settings__button" value="Отправить"/>
                 </div>
 
             </section>
