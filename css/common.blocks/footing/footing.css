@@ -34,6 +34,7 @@
 .footing__agreement {
     align-self: center;
     margin-right: 25px;
+    -webkit-user-select: none;
 }
 
 .footing__agreement__centered {
@@ -43,6 +44,7 @@
 .footing_page-load {
     margin-left: 20px;
     align-self: center;
+    -webkit-user-select: none;
 }
 
 @media screen and (max-width: 550px) {
