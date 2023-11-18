@@ -21,10 +21,10 @@
     <link href="css/common.blocks/customers-menu/customers-menu__grid.css" rel="stylesheet">
     <link href="css/common.blocks/pagination/pagination.css" rel="stylesheet">
     <link href="css/common.blocks/pagination/pagination__delete-last.css" rel="stylesheet">
+    <link href="css/common.blocks/add-customer/add-customer.css" rel="stylesheet">
 
     <link href="css/common.blocks/footing/footing.css" rel="stylesheet">
     <link href="css/common.blocks/contacts.css" rel="stylesheet">
-
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
     <script src="css/common.blocks/menu/collapse-menu.js"></script>
@@ -111,7 +111,7 @@
             <section class="customers-menu">
                 <div class="customers-menu__navigation customers-menu__navigation__grid">
                     <input type="submit" class="customers-menu__add-button customers-menu__add-button__grid"
-                           value="Добавить клиента"/>
+                           value="Добавить клиента" onclick="toggleCustomerShow()"/>
                     <label class="customers-menu__find-label customers-menu__find-label__grid">
                         <input type="text" placeholder="Поиск по Ф.И.О., номеру телефона, email"
                                class="customers-menu__find"/>
@@ -121,7 +121,7 @@
                         </button>
                     </label>
                 </div>
-                <div class="customers-menu__content customers-menu__content__grid">
+                <div id="customers-menu" class="customers-menu__content customers-menu__content__grid">
                     <div class="customer customer__grid">
                         <img class="customer__photo customer__top" src="img/customer/untitled.jpeg" alt="фото">
                         <div class="customer__info customer__top">
@@ -130,7 +130,9 @@
                             </div>
                             <div class="customer__contact customer__contact__grid customer__first-contact">
                                 <img class="customer__icon" src="img/customer/phone.svg" alt="">
-                                +7-800-555-35-35
+                                <div class="customer__phone">
+                                    +7-800-555-35-35
+                                </div>
                             </div>
                             <div class="customer__contact customer__contact__grid">
                                 <img class="customer__icon" src="img/customer/email.svg" alt="">
@@ -138,7 +140,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="customer customer__grid">
                         <img class="customer__photo customer__top" src="img/customer/untitled.jpeg" alt="фото">
                         <div class="customer__info customer__top">
@@ -147,15 +148,18 @@
                             </div>
                             <div class="customer__contact customer__contact__grid customer__first-contact">
                                 <img class="customer__icon" src="img/customer/phone.svg" alt="">
-                                не указан
+                                <div class="customer__phone">
+                                    не указан
+                                </div>
                             </div>
                             <div class="customer__contact customer__contact__grid">
                                 <img class="customer__icon" src="img/customer/email.svg" alt="">
-                                cr7@inbox.ru
+                                <div class="customer__email">
+                                    cr7@inbox.ru
+                                </div>
                             </div>
                         </div>
                     </div>
-
                     <div class="customer customer__grid">
                         <img class="customer__photo customer__top" src="img/customer/untitled.jpeg" alt="фото">
                         <div class="customer__info customer__top">
@@ -164,15 +168,18 @@
                             </div>
                             <div class="customer__contact customer__contact__grid customer__first-contact">
                                 <img class="customer__icon" src="img/customer/phone.svg" alt="">
-                                +7-800-555-35-35
+                                <div class="customer__phone">
+                                    +7-800-555-35-35
+                                </div>
                             </div>
                             <div class="customer__contact customer__contact__grid">
                                 <img class="customer__icon" src="img/customer/email.svg" alt="">
-                                barbie_is_garbage@gmail.com
+                                <div class="customer__email">
+                                    barbie_is_garbage@gmail.com
+                                </div>
                             </div>
                         </div>
                     </div>
-
                     <div class="customer customer__grid">
                         <img class="customer__photo customer__top" src="img/customer/untitled.jpeg" alt="фото">
                         <div class="customer__info customer__top">
@@ -181,28 +188,90 @@
                             </div>
                             <div class="customer__contact customer__contact__grid customer__first-contact">
                                 <img class="customer__icon" src="img/customer/phone.svg" alt="">
-                                +7-800-555-35-35
+                                <div class="customer__phone">
+                                    +7-800-555-35-35
+                                </div>
                             </div>
                             <div class="customer__contact customer__contact__grid">
                                 <img class="customer__icon" src="img/customer/email.svg" alt="">
-                                barbie_is_garbage@gmail.com
+                                <div class="customer__email">
+                                    barbie_is_garbage@gmail.com
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <template id="customer-template">
+                        <div class="customer customer__grid">
+                            <img class="customer__photo customer__top" src="img/customer/untitled.jpeg" alt="фото">
+                            <div class="customer__info customer__top">
+                                <div class="customer__name">
+                                </div>
+                                <div class="customer__contact customer__contact__grid customer__first-contact">
+                                    <img class="customer__icon" src="img/customer/phone.svg" alt="">
+                                    <div class="customer__phone"></div>
+                                </div>
+                                <div class="customer__contact customer__contact__grid">
+                                    <img class="customer__icon" src="img/customer/email.svg" alt="">
+                                    <div class="customer__email"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
                 </div>
                 <div class="pagination">
                     <ul class="pagination-list">
-                        <li class="pagination__item">1</li>
-                        <li class="pagination__item pagination__item__active">2</li>
-                        <li class="pagination__item">3</li>
-                        <li class="pagination__item pagination__last-neighbour">4</li>
-                        <li class="pagination__item pagination__last-neighbour">5</li>
-                        <li class="pagination__item">...</li>
-                        <li class="pagination__item">20</li>
+<!--                        <li class="pagination__item" onclick="changePage(1)">1</li>-->
+<!--                        <li class="pagination__item pagination__item__active" onclick="changePage(2)">2</li>-->
+<!--                        <li class="pagination__item" onclick="changePage(3)">3</li>-->
+<!--                        <li class="pagination__item pagination__last-neighbour" onclick="changePage(4)">4</li>-->
+<!--                        <li class="pagination__item pagination__last-neighbour" onclick="changePage(5)">5</li>-->
+<!--                        <li class="pagination__item">...</li>-->
+<!--                        <li class="pagination__item" onclick="changePage(20)">20</li>-->
+                        <template id="pagination__item-template">
+                            <li class="pagination__item"></li>
+                        </template>
                     </ul>
                 </div>
             </section>
+            <section class="add-customer">
+                <div class="add-customer__header">
+                    <div class="add-customer__title">
+                        Добавить пользователя
+                    </div>
+                    <div class="add-customer__close-button" onclick="toggleCustomerShow()">
+                        <img class="add-customer__close-icon" src="img/add-customer/cross.svg" alt="Закрыть">
+                    </div>
+                </div>
+                <div class="add-customer__form">
+                    <form id="add-customer__form" action="" method="get">
+                        <div class="add-customer__form-item">
+                            <label for="firstname" class="add-customer__form-label">Имя*</label>
+                            <input type="text" name="name" id="firstname" class="add-customer__form-input" required/>
+                        </div>
+                        <div class="add-customer__form-item">
+                            <label for="surname" class="add-customer__form-label">Фамилия*</label>
+                            <input type="text" name="name" id="surname" class="add-customer__form-input" required/>
+                        </div>
+                        <div class="add-customer__form-item">
+                            <label for="other-name" class="add-customer__form-label">Отчество</label>
+                            <input type="text" name="name" id="other-name" class="add-customer__form-input"/>
+                        </div>
+                        <div class="add-customer__form-item">
+                            <label for="email" class="add-customer__form-label">Email*</label>
+                            <input type="email" name="email" id="email" class="add-customer__form-input" required/>
+                        </div>
+                        <div class="add-customer__form-item">
+                            <label for="phone" class="add-customer__form-label">Телефон*</label>
+                            <input type="text" name="tel" id="phone" class="add-customer__form-input" required/>
+                        </div>
+                        <div class="add-customer__form-item">
+                            <input class="add-customer__create-button" type="submit" value="Создать"/>
+                        </div>
+                    </form>
+                </div>
+            </section>
         </main>
+
 
         <footer class="footing footing__direction">
             <div class="footing__left">
@@ -230,6 +299,7 @@
 
     <div class="layout-overlay"></div>
 </div>
+<script src="css/common.blocks/add-customer/add-customer.js"></script>
 <script src="css/common.blocks/menu/activate-menu-item.js"></script>
 <script src="css/common.blocks/footing/load-time.js"></script>
 </body>

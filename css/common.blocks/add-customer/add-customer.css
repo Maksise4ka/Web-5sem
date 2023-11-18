@@ -1,0 +1,86 @@
+.add-customer {
+    display: none;
+    position: absolute;
+    /*top: 5%;*/
+    left: 25%;
+    background-color: white;
+    width: 50%;
+    border-radius: 10px;
+
+    animation: dropdownAnimation .1s;
+}
+
+.add-customer__show {
+    display: block;
+    z-index: 1001;
+}
+
+.add-customer__title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 10px 20px;
+}
+
+.add-customer__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-customer__close-button {
+    cursor: pointer;
+    margin: 10px 20px;
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+}
+
+/*.add-customer__close-button:hover {*/
+/*    border: 1px solid black;*/
+
+/*}*/
+
+.add-customer__close-icon {
+    height: 25px;
+}
+
+.add-customer__form-item {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 10px;
+}
+.add-customer__form-label {
+    font-weight: bold;
+}
+
+.add-customer__form-input {
+    border-radius: 8px;
+    border: 3px solid #d8d9db;
+    height: 2rem;
+    padding-left: 0.4rem;
+    font: inherit;
+}
+
+.add-customer__create-button {
+    width: 10rem;
+    height: 2.5rem;
+    border-radius: 15px;
+    border: 1px solid black;
+    background-color: #ebebeb;
+    font-family: inherit;
+    cursor: pointer;
+    align-self: flex-start;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 900px) {
+    .add-customer {
+        left: 5%;
+        width: 90%;
+    }
+}
+
+
+/* TODO */
+.layout-overlay__customer {
+    display: block;
+}
