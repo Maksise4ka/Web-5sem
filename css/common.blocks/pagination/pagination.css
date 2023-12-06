@@ -22,3 +22,11 @@
     color: white;
     cursor: default;
 }
+
+@media screen and (max-width: 350px) {
+    .pagination__item {
+        height: 20px;
+        width: 24px;
+        margin: 0 2px;
+    }
+}

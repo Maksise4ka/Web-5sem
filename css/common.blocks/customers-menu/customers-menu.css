@@ -1,5 +1,5 @@
 .customers-menu {
-    margin: 40px;
+    margin: 40px 10px 40px 40px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;

@@ -1,5 +1,5 @@
 function getFetchPages() {
-    return 4
+    return 10
 }
 
 function getTotalPages() {
@@ -22,8 +22,7 @@ function getTotalPages() {
     })
 })()
 
-function displayPagination(startPage) {
-    //TODO: correct pagination
+function clearPagination() {
     document.querySelector(".pagination-list").childNodes.forEach(child => {
         if (child.classList !== undefined) {
             if (child.classList.contains("pagination__item")) {
@@ -31,27 +30,55 @@ function displayPagination(startPage) {
             }
         }
     })
+}
 
+function generatePages(totalPages, currentPage, bound) {
+    let pages = []
+    for (let i = Math.max(1, currentPage - bound); i <= Math.min(totalPages, currentPage + bound); ++i) {
+        pages.push(i)
+    }
+    if (pages[0] - 1 > 1)
+        pages.unshift("..")
+    if (pages[0] !== 1)
+        pages.unshift(1)
+    if (totalPages - pages[pages.length - 1] > 1)
+        pages.push("..")
+    if (pages[pages.length - 1] !== totalPages)
+        pages.push(totalPages)
+
+    return pages
+}
+
+function displayPagination(currentPage) {
+    //TODO: correct pagination
+    clearPagination()
+
+    let bound = 2
     let totalPages = getTotalPages()
-    // let activeNumber = 1
+    let pages = generatePages(totalPages, currentPage, bound)
+
     let paginationList = document.querySelector(".pagination-list")
-    for (let i = 1; i < totalPages + 1; ++i) {
+    for (let i = 0; i < pages.length; ++i) {
         let template = document.getElementById("pagination__item-template")
         let page = template.content.cloneNode(true)
         paginationList.appendChild(page)
         page = paginationList.lastElementChild
 
-        page.innerHTML = i.toString()
-        if (i === startPage) {
+        page.innerHTML = pages[i].toString()
+        if (pages[i] === currentPage) {
             page.classList.add("pagination__item__active")
-        } else {
-            page.onclick = () => changePage(i)
+        }
+        else if(pages[i] !== "..") {
+            if (Math.abs(pages[i] - currentPage) === bound) {
+                page.classList.add("pagination__last-neighbour")
+            }
+            page.onclick = () => changePage(pages[i])
         }
     }
 }
 
 function changePage(pageNumber) {
-    displayPagination()
+    displayPagination(pageNumber)
 
     document.querySelectorAll(".pagination__item").forEach(e => {
         if (Number(e.innerHTML) === pageNumber) {
