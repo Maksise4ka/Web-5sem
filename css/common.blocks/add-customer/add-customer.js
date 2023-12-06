@@ -50,7 +50,6 @@ function generatePages(totalPages, currentPage, bound) {
 }
 
 function displayPagination(currentPage) {
-    //TODO: correct pagination
     clearPagination()
 
     let bound = 2
