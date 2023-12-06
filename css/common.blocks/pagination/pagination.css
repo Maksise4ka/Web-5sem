@@ -20,4 +20,5 @@
 .pagination__item__active {
     background-color: #444444;
     color: white;
+    cursor: default;
 }

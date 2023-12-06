@@ -121,91 +121,12 @@
                         </button>
                     </label>
                 </div>
-                <div id="customers-menu" class="customers-menu__content customers-menu__content__grid">
-                    <div class="customer customer__grid">
-                        <img class="customer__photo customer__top" src="img/customer/untitled.jpeg" alt="фото">
-                        <div class="customer__info customer__top">
-                            <div class="customer__name">
-                                Памела Андерсон
-                            </div>
-                            <div class="customer__contact customer__contact__grid customer__first-contact">
-                                <img class="customer__icon" src="img/customer/phone.svg" alt="">
-                                <div class="customer__phone">
-                                    +7-800-555-35-35
-                                </div>
-                            </div>
-                            <div class="customer__contact customer__contact__grid">
-                                <img class="customer__icon" src="img/customer/email.svg" alt="">
-                                pomello@mail.ru
-                            </div>
-                        </div>
-                    </div>
-                    <div class="customer customer__grid">
-                        <img class="customer__photo customer__top" src="img/customer/untitled.jpeg" alt="фото">
-                        <div class="customer__info customer__top">
-                            <div class="customer__name">
-                                Криштиану Роналду
-                            </div>
-                            <div class="customer__contact customer__contact__grid customer__first-contact">
-                                <img class="customer__icon" src="img/customer/phone.svg" alt="">
-                                <div class="customer__phone">
-                                    не указан
-                                </div>
-                            </div>
-                            <div class="customer__contact customer__contact__grid">
-                                <img class="customer__icon" src="img/customer/email.svg" alt="">
-                                <div class="customer__email">
-                                    cr7@inbox.ru
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="customer customer__grid">
-                        <img class="customer__photo customer__top" src="img/customer/untitled.jpeg" alt="фото">
-                        <div class="customer__info customer__top">
-                            <div class="customer__name">
-                                Райан Гослинг Артемович
-                            </div>
-                            <div class="customer__contact customer__contact__grid customer__first-contact">
-                                <img class="customer__icon" src="img/customer/phone.svg" alt="">
-                                <div class="customer__phone">
-                                    +7-800-555-35-35
-                                </div>
-                            </div>
-                            <div class="customer__contact customer__contact__grid">
-                                <img class="customer__icon" src="img/customer/email.svg" alt="">
-                                <div class="customer__email">
-                                    barbie_is_garbage@gmail.com
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="customer customer__grid">
-                        <img class="customer__photo customer__top" src="img/customer/untitled.jpeg" alt="фото">
-                        <div class="customer__info customer__top">
-                            <div class="customer__name">
-                                Райан Гослинг Артемович
-                            </div>
-                            <div class="customer__contact customer__contact__grid customer__first-contact">
-                                <img class="customer__icon" src="img/customer/phone.svg" alt="">
-                                <div class="customer__phone">
-                                    +7-800-555-35-35
-                                </div>
-                            </div>
-                            <div class="customer__contact customer__contact__grid">
-                                <img class="customer__icon" src="img/customer/email.svg" alt="">
-                                <div class="customer__email">
-                                    barbie_is_garbage@gmail.com
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div id="customers-menu" class="customers-menu__content customers-menu__content__grid customers-menu__content-loading">
                     <template id="customer-template">
                         <div class="customer customer__grid">
                             <img class="customer__photo customer__top" src="img/customer/untitled.jpeg" alt="фото">
                             <div class="customer__info customer__top">
-                                <div class="customer__name">
-                                </div>
+                                <div class="customer__name"></div>
                                 <div class="customer__contact customer__contact__grid customer__first-contact">
                                     <img class="customer__icon" src="img/customer/phone.svg" alt="">
                                     <div class="customer__phone"></div>
@@ -217,16 +138,14 @@
                             </div>
                         </div>
                     </template>
+                    <img class="customer-menu__preloader" src="img/customer/loading.gif" alt="">
+                    <div class="customer-menu__error customer-menu__error__hide">
+                        ⚠ Что-то пошло не так
+                    </div>
                 </div>
                 <div class="pagination">
                     <ul class="pagination-list">
-<!--                        <li class="pagination__item" onclick="changePage(1)">1</li>-->
-<!--                        <li class="pagination__item pagination__item__active" onclick="changePage(2)">2</li>-->
-<!--                        <li class="pagination__item" onclick="changePage(3)">3</li>-->
-<!--                        <li class="pagination__item pagination__last-neighbour" onclick="changePage(4)">4</li>-->
-<!--                        <li class="pagination__item pagination__last-neighbour" onclick="changePage(5)">5</li>-->
 <!--                        <li class="pagination__item">...</li>-->
-<!--                        <li class="pagination__item" onclick="changePage(20)">20</li>-->
                         <template id="pagination__item-template">
                             <li class="pagination__item"></li>
                         </template>

@@ -54,6 +54,25 @@
     box-sizing: border-box;
 }
 
+.customers-menu__content-loading, .customers-menu__content-error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.customer-menu__error__hide {
+    display: none;
+}
+
+.customer-menu__preloader {
+    width: 50px;
+    height: 50px;
+}
+
+.customer-menu__error {
+    font-weight: bold;
+}
+
 .customer {
     margin: 10px;
 }
