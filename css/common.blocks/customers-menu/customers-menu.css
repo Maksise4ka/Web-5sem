@@ -8,6 +8,7 @@
 
 .customers-menu__navigation {
     display: flex;
+    align-items: center;
 }
 
 .customers-menu__add-button {
@@ -25,7 +26,6 @@
     flex: 1;
     height: 30px;
     margin: 0 20px 0 20px;
-    align-self: stretch;
 }
 
 .customers-menu__find {
