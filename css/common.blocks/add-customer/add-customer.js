@@ -2,6 +2,10 @@ function getFetchPages() {
     return 10
 }
 
+function getCustomersPerPage() {
+    return 12
+}
+
 function getTotalPages() {
     let customers = JSON.parse(localStorage.getItem("customers"))
     let len;
@@ -10,7 +14,7 @@ function getTotalPages() {
     else
         len = customers.length
 
-    let customersPerPage = 3 * 3
+    let customersPerPage = getCustomersPerPage()
     return Math.ceil(len / customersPerPage) + getFetchPages()
 }
 
@@ -66,9 +70,8 @@ function displayPagination(currentPage) {
         page.innerHTML = pages[i].toString()
         if (pages[i] === currentPage) {
             page.classList.add("pagination__item__active")
-        }
-        else if(pages[i] !== "..") {
-            if (Math.abs(pages[i] - currentPage) === bound) {
+        } else if (pages[i] !== "..") {
+            if (Math.abs(pages[i] - currentPage) === bound && pages[i] !== 1 && pages[i] !== totalPages) {
                 page.classList.add("pagination__last-neighbour")
             }
             page.onclick = () => changePage(pages[i])
@@ -133,16 +136,16 @@ function displayFromLocalStorage() {
         customers = []
 
     let activatedPage = Number(document.querySelector(".pagination__item__active").innerHTML) - getFetchPages()
-    let itemsPerPage = 3 * 3
+    let customersPerPage = getCustomersPerPage()
 
     customers
-        .slice((activatedPage - 1) * itemsPerPage, activatedPage * itemsPerPage)
+        .slice((activatedPage - 1) * customersPerPage, activatedPage * customersPerPage)
         .forEach(c => displayCustomer(c))
 }
 
 function fetchCustomers(pageNumber) {
     displayLoading()
-    let query = fetch(`https://randomuser.me/api/?results=9&page=${pageNumber}`)
+    let query = fetch(`https://randomuser.me/api/?results=${getCustomersPerPage()}&page=${pageNumber}`)
     query.then(async data => {
         let d = await data.json()
         let customers = d["results"]
