@@ -19,10 +19,19 @@ function getTotalPages() {
 }
 
 (() => {
-    displayPagination(1)
+    let urlParams = new URLSearchParams(window.location.search)
+    let currentPage = Number(urlParams.get("page"))
+    if (currentPage === 0 || Number.isNaN(currentPage) || currentPage > getTotalPages())
+        currentPage = 1
+
+    displayPagination(currentPage)
 
     window.addEventListener('load', function () {
-        fetchCustomers(1)
+        if (currentPage <= getFetchPages()) {
+            fetchCustomers(currentPage)
+        } else {
+            displayFromLocalStorage()
+        }
     })
 })()
 
@@ -80,23 +89,25 @@ function displayPagination(currentPage) {
 }
 
 function changePage(pageNumber) {
-    displayPagination(pageNumber)
+    window.location.replace(`${window.location.origin}${window.location.pathname}?page=${pageNumber}`)
 
-    document.querySelectorAll(".pagination__item").forEach(e => {
-        if (Number(e.innerHTML) === pageNumber) {
-            e.classList.add("pagination__item__active")
-        } else {
-            e.classList.remove("pagination__item__active")
-        }
-    })
-
-    clearCustomers()
-    hideError()
-    if (pageNumber <= getFetchPages()) {
-        fetchCustomers(pageNumber)
-    } else {
-        displayFromLocalStorage()
-    }
+    // displayPagination(pageNumber)
+    //
+    // document.querySelectorAll(".pagination__item").forEach(e => {
+    //     if (Number(e.innerHTML) === pageNumber) {
+    //         e.classList.add("pagination__item__active")
+    //     } else {
+    //         e.classList.remove("pagination__item__active")
+    //     }
+    // })
+    //
+    // clearCustomers()
+    // hideError()
+    // if (pageNumber <= getFetchPages()) {
+    //     fetchCustomers(pageNumber)
+    // } else {
+    //     displayFromLocalStorage()
+    // }
 }
 
 function clearCustomers() {
@@ -141,6 +152,8 @@ function displayFromLocalStorage() {
     customers
         .slice((activatedPage - 1) * customersPerPage, activatedPage * customersPerPage)
         .forEach(c => displayCustomer(c))
+
+    hideLoading()
 }
 
 function fetchCustomers(pageNumber) {
