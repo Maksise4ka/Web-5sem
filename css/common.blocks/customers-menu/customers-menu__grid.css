@@ -18,6 +18,10 @@
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: repeat(12, 1fr);
     }
+
+    .customers-menu__grid {
+        margin: 40px 10px;
+    }
 }
 
 @media screen and (max-width: 400px) {
@@ -28,27 +32,28 @@
 
 @media screen and (max-width: 570px) {
 
-    .customers-menu__grid {
-        margin: 40px 10px;
-    }
-
     .customers-menu__navigation__grid {
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 
     .customers-menu__add-button__grid {
-        align-self: flex-end;
+        align-self: center;
     }
 
     .customers-menu__find-label__grid {
         margin: 20px 0;
+        min-height: 30px;
+        min-width: 80%;
+    }
+
+    .customers-menu__find {
         min-height: 30px;
     }
 }
 
 @media screen and (min-width: 800px) and (max-width: 900px) {
     .customer__first-contact {
-        margin-top: 50px;
+        padding-top: 50px;
     }
 
     .customer__contact__grid {
@@ -58,7 +63,7 @@
 
 @media screen and (max-width: 350px) {
     .customer__first-contact {
-        margin-top: 50px;
+        padding-top: 50px;
     }
 
     .customer__contact__grid {
