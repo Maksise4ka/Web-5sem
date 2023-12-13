@@ -159,23 +159,24 @@ function displayFromLocalStorage() {
 function fetchCustomers(pageNumber) {
     displayLoading()
     let query = fetch(`https://randomuser.me/api/?results=${getCustomersPerPage()}&page=${pageNumber}`)
-    query.then(async data => {
-        let d = await data.json()
-        let customers = d["results"]
-        for (let i = 0; i < customers.length; ++i) {
-            let newCustomer = {
-                "id": 10,
-                "firstname": customers[i]["name"]["first"],
-                "other-name": "",
-                "surname": customers[i]["name"]["last"],
-                "email": customers[i]["email"],
-                "phone": customers[i]["phone"],
-                "img": customers[i]["picture"]["large"]
-            }
+    query
+        .then(data => data.json())
+        .then(d => {
+            let customers = d["results"]
+            for (let i = 0; i < customers.length; ++i) {
+                let newCustomer = {
+                    "id": 10,
+                    "firstname": customers[i]["name"]["first"],
+                    "other-name": "",
+                    "surname": customers[i]["name"]["last"],
+                    "email": customers[i]["email"],
+                    "phone": customers[i]["phone"],
+                    "img": customers[i]["picture"]["large"]
+                }
 
-            displayCustomer(newCustomer)
-        }
-    }).catch(displayError).finally(hideLoading)
+                displayCustomer(newCustomer)
+            }
+        }).catch(displayError).finally(hideLoading)
 }
 
 function displayCustomer(customer) {
