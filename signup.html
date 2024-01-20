@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Template</title>
+
+    <link href="css/style.css" rel="stylesheet">
+
+    <link href="css/common.blocks/login/login.css" rel="stylesheet">
+
+    <link href="css/common.blocks/main-content/main-content.css" rel="stylesheet">
+
+    <link href="css/common.blocks/footing/footing.css" rel="stylesheet">
+    <link href="css/common.blocks/contacts.css" rel="stylesheet">
+
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+</head>
+<body>
+<div class="layout">
+
+    <div class="layout-content">
+
+        <main class="main-content">
+            <section class="login">
+                <div class="login__login">
+                    <div class="login__logo">
+                        <img class="logo__logo-img" src="img/heading/logo.png" alt="Логотип">
+                    </div>
+                    <form class="login__form">
+                        <div class="login__form-item">
+                            <label for="email" class="login__form-label">E-mail</label>
+                            <input type="email" name="email" id="email" class="login__form-input" required/>
+                        </div>
+                        <div class="login__form-item">
+                            <label for="password" class="login__form-label">Пароль</label>
+                            <input type="password" name="password" id="password" class="login__form-input" required/>
+                        </div>
+
+                        <div class="login__form-item">
+                            <label for="remember" class="login__form-label">
+                                <input type="checkbox" name="remember" id="remember" class="login__form-checkbox"
+                                       required/>
+                                <span>
+                                Пользовательское соглашение
+                            </span>
+                            </label>
+                        </div>
+
+                        <div class="login__form-submit-item login__form-submit">
+                            <input class="login__form-submit-button" type="submit" value="Регистрация"/>
+                        </div>
+
+                    </form>
+                </div>
+
+            </section>
+        </main>
+
+        <footer class="footing footing__direction">
+            <div class="footing__left">
+                <div class="footing__item footing__item__margin contacts">
+                    Контакты
+                    <div class="contacts__items">
+                        <a href="tel:+7 (777) 777-77-77">
+                            <img class="contacts__icon" src="img/footing/call.svg" alt="телефон">
+                        </a>
+                        <a href="mailto:for_maxim@bk.ru">
+                            <img class="contacts__icon" src="img/footing/email.svg" alt="email">
+                        </a>
+                    </div>
+                </div>
+                <a class="footing__item footing__item__margin footing__tech-support" href="tech-support.html">
+                    Тех поддержка
+                </a>
+                <div class="footing__item footing_page-load" id="page-load"></div>
+            </div>
+            <div class="footing__item footing__item__margin footing__agreement footing__agreement__centered">
+                Пользовательское соглашение
+            </div>
+        </footer>
+    </div>
+
+    <div class="layout-overlay"></div>
+</div>
+<script src="css/common.blocks/menu/activate-menu-item.js"></script>
+<script src="css/common.blocks/footing/load-time.js"></script>
+</body>
+</html>

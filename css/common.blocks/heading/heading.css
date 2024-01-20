@@ -85,6 +85,8 @@
     -webkit-user-select: none;
     display: flex;
     padding: 10px;
+    text-decoration: none;
+    color: #000000;
 }
 
 .heading__dropdown-item:hover{
@@ -98,6 +100,7 @@
 
 .heading__dropdown-item-name {
     font-family: inherit;
+    /*text-decoration: none;*/
 }
 
 @keyframes dropdownAnimation {
