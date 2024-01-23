@@ -1,0 +1,110 @@
+.calendar-settings {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    max-width: 80vw;
+    margin-left: 100px;
+}
+
+.calendar-settings__content {
+    display: flex;
+    width: 100%;
+}
+
+.calendar-settings__filters {
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-settings__row {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-items: baseline;
+    /*width: 100%;*/
+    max-width: 60vw;
+}
+
+.calendar-settings__second {
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.calendar-settings__item {
+    /*flex: 1*/
+}
+
+.calendar-settings__choose-master {
+    margin-right: 50px;
+}
+
+.calendar-settings__timing {
+    display: flex;
+    margin-right: 50px;
+}
+
+.calendar-settings__option {
+    text-align: center;
+}
+
+.calendar-settings__start-time {
+    margin-right: 20px;
+}
+
+.calendar-settings__select {
+    height: 1.6rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-family: inherit!important;
+}
+
+.calendar-settings__submit {
+    height: 2rem;
+    width: 9rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-family: inherit!important;
+    cursor: pointer;
+}
+
+.calendar-settings__week-variant {
+    display: flex;
+}
+
+.calendar-settings__week {
+    margin-right: 15px;
+}
+
+.calendar-settings__week-holder {
+    display: flex;
+    margin: 0 25px;
+}
+
+.calendar-settings__week-img {
+    width: 20px;
+}
+
+.calendar-settings__current-week {
+    font-weight: bold;
+    margin: 0 15px;
+}
+
+.calendar-settings__change-week {
+    cursor: pointer;
+}
+
+.calendar__settings-button-clicked {
+    background: #d6d6d6;
+}
+
+.calendar-settings__create-button {
+    margin: 30px 20px;
+    height: 3rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-family: inherit!important;
+}
+
+.calendar-settings__create-button:hover {
+    background: #d6d6d6;
+}
