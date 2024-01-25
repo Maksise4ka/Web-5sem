@@ -18,6 +18,7 @@
     <link href="css/common.blocks/main-content/main-content.css" rel="stylesheet">
     <link href="css/common.blocks/calendar/calendar.css" rel="stylesheet">
     <link href="css/common.blocks/calendar/calendar-settings.css" rel="stylesheet">
+    <link href="css/common.blocks/calendar/add-event.css" rel="stylesheet">
 
     <link href="css/common.blocks/footing/footing.css" rel="stylesheet">
     <link href="css/common.blocks/contacts.css" rel="stylesheet">
@@ -153,7 +154,8 @@
                         <div class="calendar-settings__week-holder">
                             <div class="calendar-settings__prev-week">
                                 <a class="calendar-settings__change-week">
-                                    <img class="calendar-settings__week-img" src="img/calendar/left-arrow.svg" alt="Предыдущая неделя">
+                                    <img class="calendar-settings__week-img" src="img/calendar/left-arrow.svg"
+                                         alt="Предыдущая неделя">
                                 </a>
                             </div>
 
@@ -163,30 +165,90 @@
 
                             <div class="calendar-settings__next-week">
                                 <a class="calendar-settings__change-week">
-                                    <img class="calendar-settings__week-img" src="img/calendar/right-arrow.svg" alt="Предыдущая неделя">
+                                    <img class="calendar-settings__week-img" src="img/calendar/right-arrow.svg"
+                                         alt="Предыдущая неделя">
                                 </a>
                             </div>
 
                         </div>
                         <div class="calendar-settings__week-variant">
                             <div class="calendar-settings__week">
-                                <input class="calendar-settings__submit" type="submit" value="Неделя" id="set-all-week" onclick="displayAllWeek()"/>
+                                <input class="calendar-settings__submit" type="submit" value="Неделя" id="set-all-week"
+                                       onclick="displayAllWeek()"/>
                             </div>
                             <div class="calendar-settings__workweek">
-                                <input class="calendar-settings__submit" type="submit" value="Рабочая неделя" id="set-workweek" onclick="displayWorkWeek()"/>
+                                <input class="calendar-settings__submit" type="submit" value="Рабочая неделя"
+                                       id="set-workweek" onclick="displayWorkWeek()"/>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="calendar-settings__create-event">
                     <div class="calendar-settings__workweek">
-                        <input class="calendar-settings__create-button" type="submit" value="Создать событие"/>
+                        <input class="calendar-settings__create-button" type="submit" value="Создать событие"
+                               onclick="toggleCalendarShow()"/>
                     </div>
                 </div>
             </section>
             <section class="calendar">
                 <table class="calendar__table">
                 </table>
+            </section>
+
+            <section class="add-event">
+                <div class="add-event__header">
+                    <div class="add-event__title">
+                        Создать событие
+                    </div>
+                    <div class="add-event__close-button" onclick="toggleCalendarShow()">
+                        <img class="add-event__close-icon" src="img/add-customer/cross.svg" alt="Закрыть">
+                    </div>
+                </div>
+                <div>
+                    <form id="add-customer__form" action="" method="get">
+                        <div class="add-event__form-item">
+                            <label for="firstname" class="add-event__form-label">ФИО клиента*</label>
+                            <input type="text" name="name" id="firstname" class="add-event__form-input" required/>
+                        </div>
+                        <div class="add-event__form-item">
+                            <label for="date" class="add-event__form-label">Дата события*</label>
+                            <input type="date" name="name" id="date" class="add-event__form-input" required/>
+                        </div>
+                        <div class="add-event__form-item add-event__master">
+                            <label for="event-master" class="add-event__form-label">Мастер</label>
+                            <select id="event-master" class="add-event__form-select">
+                                <option class="calendar-settings__option">Керим Эминов</option>
+                                <option class="calendar-settings__option">Влад Сергей</option>
+                            </select>
+                        </div>
+                        <div class="add-event__form-item add-event__time-range">
+                            <div class="add-event__time-item">
+                                <label for="event-start" class="add-event__form-label">Начало</label>
+                                <select id="event-start" class="add-event__form-select">
+                                    <option class="calendar-settings__option">0:00</option>
+                                    <option class="calendar-settings__option">1:00</option>
+                                    <option class="calendar-settings__option">2:00</option>
+                                    <option class="calendar-settings__option">3:00</option>
+                                    <option class="calendar-settings__option">11:00</option>
+                                </select>
+                            </div>
+
+                            <div class="add-event__time-item">
+                                <label for="event-end" class="add-event__form-label">Конец</label>
+                                <select id="event-end" class="add-event__form-select">
+                                    <option class="calendar-settings__option">0:00</option>
+                                    <option class="calendar-settings__option">1:00</option>
+                                    <option class="calendar-settings__option">2:00</option>
+                                    <option class="calendar-settings__option">3:00</option>
+                                    <option class="calendar-settings__option">11:00</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="add-event__form-item">
+                            <input class="add-event__create-button" type="submit" value="Создать"/>
+                        </div>
+                    </form>
+                </div>
             </section>
 
             <template id="calendar-day">
@@ -217,9 +279,10 @@
 
             <template id="calendar-event">
                 <div class="calendar__event">
-
+                    Это потом надо удалить
                 </div>
             </template>
+
 
         </main>
 
@@ -250,6 +313,7 @@
     <div class="layout-overlay"></div>
 </div>
 <script src="css/common.blocks/calendar/calendar.js"></script>
+<script src="css/common.blocks/calendar/add-event.js"></script>
 <script src="css/common.blocks/menu/activate-menu-item.js"></script>
 <script src="css/common.blocks/footing/load-time.js"></script>
 </body>

@@ -1,11 +1,13 @@
-function displayCells(cellId, daysCount) {
+function displayCells(time, cellId, daysCount) {
     let template = document.getElementById(cellId)
 
     let nodes = document.querySelectorAll(".calendar__row")
     let node = nodes[nodes.length - 1]
 
     for (let i = 0; i < daysCount; ++i) {
-        node.appendChild(template.content.cloneNode(true))
+        let child = template.content.cloneNode(true)
+        child.children[0].setAttribute("id", `${time}_${i}`)
+        node.appendChild(child)
     }
 }
 
@@ -17,21 +19,21 @@ function displayCalendarFirstHalf(time, daysCount) {
     timeCell.innerHTML = time
 
     document.querySelector(".calendar__table").appendChild(calendarRow)
-    displayCells("calendar-first-half", daysCount)
+    displayCells(time, "calendar-first-half", daysCount)
 }
 
-function displayCalendarSecondHalf(daysCount) {
+function displayCalendarSecondHalf(time, daysCount) {
     let template = document.getElementById("calendar-row-second")
     let calendarRow = template.content.cloneNode(true)
 
     document.querySelector(".calendar__table").appendChild(calendarRow)
-    displayCells("calendar-second-half", daysCount)
+    displayCells(time,"calendar-second-half", daysCount)
 }
 
 function displayCalendarRows(startHour, endHour, daysCount) {
     for (let i = startHour; i <= endHour; ++i) {
         displayCalendarFirstHalf(`${i}:00`, daysCount)
-        displayCalendarSecondHalf(daysCount)
+        displayCalendarSecondHalf(`${i}:30`, daysCount)
     }
 }
 

@@ -40,7 +40,7 @@ table{
     text-align: center;
     border: 2px solid black;
     border-bottom: 1px solid #d8d9db;
-    height: 30px;
+    height: 2rem;
     /*border-collapse: collapse;*/
 }
 
@@ -48,7 +48,7 @@ table{
     text-align: center;
     border: 2px solid black;
     border-top: 0 solid #d8d9db;
-    height: 30px;
+    height: 2rem;
     /*border-collapse: collapse;*/
 }
 
@@ -57,20 +57,28 @@ table{
     width: 10px;
 }
 
-.calendar__event {
-    overflow: hidden;
-    max-width: 2rem;
-    cursor: pointer;
-    position: relative;
-    top: 40px;
-    z-index: 100;
-    background: blue;
-}
-
 .calendar__time-content {
     position: relative;
     bottom: -15px;
     right: -25px;
     font-weight: normal;
     color: #7a7a7a;
+}
+
+.calendar__event {
+    font-size: 0.8rem;
+    font-weight: normal;
+    overflow: hidden;
+    cursor: pointer;
+    position: absolute;
+    z-index: 100;
+    background: #bebebe;
+    border-radius: 5px;
+    margin-top: -0.9rem;
+    width: 100px; /* TODO*/
+    height: 100px;
+}
+
+.calendar__event:hover {
+    border: 1px solid black;
 }
