@@ -1,3 +1,34 @@
+function getCurrentDate() {
+    let urlParams = new URLSearchParams(window.location.search)
+    let date = urlParams.get("date")
+    if (date === null)
+        return new Date()
+
+    date = Date.parse(date)
+    if (Number.isNaN(date))
+        return new Date()
+
+    return new Date(date)
+}
+
+function setToday() {
+    window.location.assign(window.location.pathname)
+}
+
+function setNextWeek() {
+    MoveToDays(7)
+}
+
+function setPrevWeek() {
+    MoveToDays(-7)
+}
+
+function MoveToDays(offset) {
+    let currentDate = getCurrentDate()
+    let nextWeekDate = new Date(currentDate.setDate(currentDate.getDate() + offset)).toISOString().split('T')[0]
+    window.location.assign(window.location.pathname + `?date=${nextWeekDate}`)
+}
+
 function displayCells(time, cellId, daysCount) {
     let template = document.getElementById(cellId)
 
@@ -27,7 +58,7 @@ function displayCalendarSecondHalf(time, daysCount) {
     let calendarRow = template.content.cloneNode(true)
 
     document.querySelector(".calendar__table").appendChild(calendarRow)
-    displayCells(time,"calendar-second-half", daysCount)
+    displayCells(time, "calendar-second-half", daysCount)
 }
 
 function displayCalendarRows(startHour, endHour, daysCount) {
@@ -48,6 +79,7 @@ function displayDaysRow(daysCount) {
         let dayTemplate = document.getElementById("calendar-day-cell")
         let dayCell = dayTemplate.content.cloneNode(true)
         dayCell.querySelector(".calendar__day").innerHTML = days[i]
+        dayCell.querySelector(".calendar__day").setAttribute("id", `calendar-weekday-${i}`)
 
         document.querySelector(".calendar__row").appendChild(dayCell);
     }
@@ -60,11 +92,39 @@ function cleanCalendar() {
         table.childNodes.forEach(child => child.remove())
 }
 
-function displayCalendar(startHour, endHour, daysCount) {
-    //TODO: add day numbers
+function displayCurrentWeekRange(date) {
+    function MonthLocale(weekDate) {
+        return weekDate.toLocaleString('default', {month: 'long'})
+    }
+
+    let day = date.getDay()
+    let firstWeekDay = new Date(new Date(date.getTime()).setDate(date.getDate() - day + 1))
+    let lastWeekDay = new Date(new Date(date.getTime()).setDate(date.getDate() + 7 - day))
+
+    let element = document.querySelector(".calendar-settings__current-week")
+    element.innerHTML = MonthLocale(firstWeekDay) === MonthLocale(lastWeekDay) ?
+        `${firstWeekDay.getDate()} - ${lastWeekDay.getDate()} ${MonthLocale(firstWeekDay)}` :
+        `${firstWeekDay.getDate()} ${MonthLocale(firstWeekDay)} - ${lastWeekDay.getDate()} ${MonthLocale(lastWeekDay)}`
+}
+
+function markCurrentWeekday(date) {
+    const millisInDay = 1000 * 60 * 60 * 24
+    let now = Math.floor(new Date().getTime() / millisInDay)
+
+    if (now !== Math.floor(date.getTime() / millisInDay))
+        return
+
+    let day = date.getDay()
+    let weekRow = document.getElementById(`calendar-weekday-${day - 1}`);
+    weekRow.classList.add("calendar__current-weekday")
+}
+
+function displayCalendar(startHour, endHour, daysCount, date) {
+    displayCurrentWeekRange(date)
     cleanCalendar()
     displayDaysRow(daysCount)
     displayCalendarRows(startHour, endHour, daysCount)
+    markCurrentWeekday(date)
 }
 
 function toggleClicked(initiatorId, disabledId) {
@@ -85,7 +145,7 @@ function displayWorkWeek(start, end) {
     if (isClicked('set-workweek'))
         return
 
-    displayCalendar(startHour, endHour, 5)
+    displayCalendar(startHour, endHour, 5, getCurrentDate())
     toggleClicked('set-workweek', 'set-all-week')
 }
 
@@ -96,7 +156,7 @@ function displayAllWeek(start, end) {
     if (isClicked('set-all-week'))
         return
 
-    displayCalendar(startHour, endHour, 7)
+    displayCalendar(startHour, endHour, 7, getCurrentDate())
     toggleClicked('set-all-week', 'set-workweek')
 }
 
@@ -126,9 +186,9 @@ function Apply() {
 
     let currentClicked = document.querySelector(".calendar__settings-button-clicked").id
     if (currentClicked === "set-all-week")
-        displayCalendar(start, end, 7)
+        displayCalendar(start, end, 7, getCurrentDate())
     else
-        displayCalendar(start, end, 5)
+        displayCalendar(start, end, 5, getCurrentDate())
 }
 
 // TODO

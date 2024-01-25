@@ -132,6 +132,7 @@
                             <div class="calendar-settings__end-time">
                                 <label>
                                     <select id="end-time" class="calendar-settings__select">
+                                        <option class="calendar-settings__option">23:00</option>
                                         <option class="calendar-settings__option">0:00</option>
                                         <option class="calendar-settings__option">1:00</option>
                                         <option class="calendar-settings__option">2:00</option>
@@ -148,23 +149,22 @@
 
                     <div class="calendar-settings__row calendar-settings__second">
                         <div class="calendar-settings__day">
-                            <input class="calendar-settings__submit" type="submit" value="Сегодня"/>
+                            <input class="calendar-settings__submit" type="submit" value="Сегодня" onclick="setToday()"/>
                         </div>
 
                         <div class="calendar-settings__week-holder">
                             <div class="calendar-settings__prev-week">
-                                <a class="calendar-settings__change-week">
+                                <a class="calendar-settings__change-week" onclick="setPrevWeek()">
                                     <img class="calendar-settings__week-img" src="img/calendar/left-arrow.svg"
                                          alt="Предыдущая неделя">
                                 </a>
                             </div>
 
                             <div class="calendar-settings__current-week">
-                                5 - 11 января
                             </div>
 
                             <div class="calendar-settings__next-week">
-                                <a class="calendar-settings__change-week">
+                                <a class="calendar-settings__change-week" onclick="setNextWeek()">
                                     <img class="calendar-settings__week-img" src="img/calendar/right-arrow.svg"
                                          alt="Предыдущая неделя">
                                 </a>
@@ -205,10 +205,10 @@
                     </div>
                 </div>
                 <div>
-                    <form id="add-customer__form" action="" method="get">
+                    <form id="add-event__form" action="" method="get">
                         <div class="add-event__form-item">
-                            <label for="firstname" class="add-event__form-label">ФИО клиента*</label>
-                            <input type="text" name="name" id="firstname" class="add-event__form-input" required/>
+                            <label for="name" class="add-event__form-label">ФИО клиента*</label>
+                            <input type="text" name="name" id="name" class="add-event__form-input" required/>
                         </div>
                         <div class="add-event__form-item">
                             <label for="date" class="add-event__form-label">Дата события*</label>
