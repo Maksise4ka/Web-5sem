@@ -1,3 +1,8 @@
+/**
+ * Возвращает дату, неделю которой нужно отобразить
+ * Эта дата берется либо из queryString, либо берется текущая
+ * @returns {Date} - дата
+ */
 function getCurrentDate() {
     let urlParams = new URLSearchParams(window.location.search)
     let date = urlParams.get("date")
@@ -23,12 +28,24 @@ function setPrevWeek() {
     MoveToDays(-7)
 }
 
+/**
+ * На сколько нужно сдвинуть календарь относительно текущей отображаемой даты
+ * @param offset - сдвиг
+ * @constructor - какой конструктор?
+ */
 function MoveToDays(offset) {
     let currentDate = getCurrentDate()
     let nextWeekDate = new Date(currentDate.setDate(currentDate.getDate() + offset)).toISOString().split('T')[0]
     window.location.assign(window.location.pathname + `?date=${nextWeekDate}`)
 }
 
+/**
+ * Отображает строку календаря (пока это полчаса)
+ * @param time - время, закрепленное за строкой
+ * @param cellId - идентификатор шаблона ячейки (для первой половины часа - calendar-first-half,
+ * для второй - calendar-second-half
+ * @param daysCount - количество отображаемых дней в неделе
+ */
 function displayCells(time, cellId, daysCount) {
     let template = document.getElementById(cellId)
 
@@ -42,6 +59,11 @@ function displayCells(time, cellId, daysCount) {
     }
 }
 
+/**
+ * Отображает строку, которая является первой половиной часа
+ * @param time - время, закрепленное за строкой
+ * @param daysCount - количество отображаемых дней в неделе
+ */
 function displayCalendarFirstHalf(time, daysCount) {
     let template = document.getElementById("calendar-row-first")
     let calendarRow = template.content.cloneNode(true)
@@ -53,6 +75,11 @@ function displayCalendarFirstHalf(time, daysCount) {
     displayCells(time, "calendar-first-half", daysCount)
 }
 
+/**
+ * Отображает строку, которая является второй половиной часа
+ * @param time - время, закрепленное за строкой
+ * @param daysCount - количество отображаемых дней в неделе
+ */
 function displayCalendarSecondHalf(time, daysCount) {
     let template = document.getElementById("calendar-row-second")
     let calendarRow = template.content.cloneNode(true)
@@ -61,6 +88,12 @@ function displayCalendarSecondHalf(time, daysCount) {
     displayCells(time, "calendar-second-half", daysCount)
 }
 
+/**
+ * Отображает все строки календаря в заданной часовом и дневном диапазоне
+ * @param startHour - начальный час
+ * @param endHour - конечный час
+ * @param daysCount - количество отображаемых дней в неделе
+ */
 function displayCalendarRows(startHour, endHour, daysCount) {
     for (let i = startHour; i <= endHour; ++i) {
         displayCalendarFirstHalf(`${i}:00`, daysCount)
@@ -68,6 +101,10 @@ function displayCalendarRows(startHour, endHour, daysCount) {
     }
 }
 
+/**
+ * Отображает первую строку календаря с днями недели
+ * @param daysCount - количество отображаемых дней в неделе
+ */
 function displayDaysRow(daysCount) {
     let days = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
 
@@ -85,6 +122,9 @@ function displayDaysRow(daysCount) {
     }
 }
 
+/**
+ * Полностью удаляет календарь с страницы
+ */
 function cleanCalendar() {
     let table = document.querySelector(".calendar__table");
 
@@ -92,6 +132,9 @@ function cleanCalendar() {
         table.childNodes.forEach(child => child.remove())
 }
 
+/**
+ * Отображает крайние даты недели (от понедельника до воскресенья)
+ */
 function displayCurrentWeekRange(date) {
     function MonthLocale(weekDate) {
         return weekDate.toLocaleString('default', {month: 'long'})
@@ -107,6 +150,10 @@ function displayCurrentWeekRange(date) {
         `${firstWeekDay.getDate()} ${MonthLocale(firstWeekDay)} - ${lastWeekDay.getDate()} ${MonthLocale(lastWeekDay)}`
 }
 
+/**
+ * Помечает дополнительным классом текущий день (если он отображен)
+ * @param date - текущая дата
+ */
 function markCurrentWeekday(date) {
     const millisInDay = 1000 * 60 * 60 * 24
     let now = Math.floor(new Date().getTime() / millisInDay)
@@ -119,6 +166,13 @@ function markCurrentWeekday(date) {
     weekRow.classList.add("calendar__current-weekday")
 }
 
+/**
+ * Отображает календарь в заданной часовом и дневном диапазоне относительно заданной даты
+ * @param startHour - начальный час
+ * @param endHour - конечный час
+ * @param daysCount - количество отображаемых дней в неделе
+ * @param date - дата, неделю которой нужно отобразить
+ */
 function displayCalendar(startHour, endHour, daysCount, date) {
     displayCurrentWeekRange(date)
     cleanCalendar()
@@ -192,4 +246,30 @@ function Apply() {
 }
 
 // TODO
-displayAllWeek()
+// function displayEvents() {
+//     function filter
+//
+//     let events = JSON.parse(localStorage.getItem("events"))
+//     if (events === null)
+//         events = []
+//
+// }
+
+(() => {
+    function displayOptions(selectId, start, end) {
+        let label = document.getElementById(selectId)
+        let template = document.getElementById("calendar-option")
+        for (let i = start; i < end; ++i) {
+            let child = template.content.cloneNode(true)
+            label.appendChild(child)
+            child = label.lastElementChild
+            child.innerHTML = `${i}:00`
+        }
+    }
+
+    displayOptions("start-time", 0, 24)
+    displayOptions("end-time", 0, 23)
+
+    // TODO
+    displayAllWeek()
+})()
