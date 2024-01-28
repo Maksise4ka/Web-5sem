@@ -72,10 +72,11 @@ function getWeekRange(date) {
 /**
  * Проверяет что входная дата относится к текущей неделе
  * @param date - входная дата
+ * @param weekDate
  * @returns {boolean} - true, если относится
  */
-function isDateInThisWeek(date) {
-    let range = getWeekRange(new Date())
+function isDateInThisWeek(date, weekDate) {
+    let range = getWeekRange(weekDate)
     let firstDay = range[0].getTime()
     let secondDay = range[1].getTime()
     let dateTime = date.getTime()
@@ -107,7 +108,7 @@ function prepareQueryString(start, end, date, workWeek) {
     if (end !== 23)
         urlParams.set("end", end)
 
-    if (!isDateInThisWeek(date))
+    if (!isDateInThisWeek(date, new Date()))
         urlParams.set("date", dateToString(date))
 
     if (workWeek)
@@ -257,7 +258,7 @@ function displayCurrentWeekRange(date) {
  * @param date - текущая дата
  */
 function markCurrentWeekday(date) {
-    if (!isDateInThisWeek(date))
+    if (!isDateInThisWeek(date, new Date()))
         return
 
     // так тут британское исчисление недели
@@ -337,20 +338,69 @@ function Apply() {
     window.location.assign(window.location.pathname + `?${queryString}`)
 }
 
+/**
+ * Конвертирование времени в формате "xx:xx" до минут
+ * @param time - время в формате "xx:xx"
+ * @returns {number} - количество минут
+ */
+function convertTimeToMinutes(time) {
+    let units = time.split(":").map(u => Number(u))
+    return units[0] * 60 + units[1]
+}
+
 // TODO
 /**
  * Отображает события, которые попадают в заданный диапазон календаря
  */
-function displayEvents() {
-    function filterEvents() {
+function displayEventsWithFilter() {
+    let range = getCurrentTimeRange().map(x => x * 60)
+
+    function filterEvent(event) {
+        let date = new Date(event["date"])
+        if (!isDateInThisWeek(date, getCurrentDate()))
+            return false
+
+        let eventStart = convertTimeToMinutes(event.start)
+        let eventEnd = convertTimeToMinutes(event.end)
+
+        return eventStart >= range[0] && eventEnd <= range[1];
     }
 
     let events = JSON.parse(localStorage.getItem("events"))
     if (events === null)
         events = []
 
+    return events.filter(filterEvent).forEach(displayEvent)
 }
 
+
+function displayEvent(event) {
+    function findRelevantTs(start, dayNumber) {
+        return document.getElementById(`${start}_${dayNumber}`)
+    }
+
+    function calculateTimeSlotCount(startMinute, endMinute) {
+        return (endMinute - startMinute) / 30
+    }
+
+    let eventStart = convertTimeToMinutes(event.start)
+    let eventEnd = convertTimeToMinutes(event.end)
+
+    let timeSlotsCount = calculateTimeSlotCount(eventStart, eventEnd)
+    // let timeSlotsCount = 5
+
+    let cell = findRelevantTs(event.start, 1) // TODO
+
+    let template = document.getElementById("calendar-event")
+    let eventNode = template.content.cloneNode(true)
+    let height = cell.offsetHeight * timeSlotsCount - 5
+    // let height = document.defaultView.getComputedStyle(cell).height.slice(0, -2) * timeSlotsCount
+
+    eventNode.children[0].style.setProperty("height", `${height}px`)
+    cell.appendChild(eventNode)
+}
+
+// TODO добавить описание события
 (() => {
     function displayOptions(selectId, start, end) {
         let label = document.getElementById(selectId)
@@ -373,6 +423,6 @@ function displayEvents() {
     else
         displayCalendar(range[0], range[1], 7, date)
 
-    // TODO добавить отображение ивентов
+    displayEventsWithFilter()
     // TODO добавить master в query string (желательно массив)
 })()
