@@ -132,49 +132,52 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="calendar-settings__item calendar-settings__apply">
-                            <input class="calendar-settings__submit" type="submit" value="Применить" onclick="Apply()"/>
+                        <div class="calendar-settings__item">
+                            <input class="calendar-settings__submit calendar-settings__apply" type="submit" value="Применить" onclick="Apply()"/>
                         </div>
                     </div>
 
                     <div class="calendar-settings__row calendar-settings__second">
-                        <div class="calendar-settings__day">
-                            <input class="calendar-settings__submit" type="submit" value="Сегодня" onclick="setToday()"/>
+                        <div class="calendar-settings__second-half">
+                            <div>
+                                <input class="calendar-settings__submit calendar-settings__today" type="submit"
+                                       value="Сегодня" onclick="setToday()"/>
+                            </div>
+
+                            <div class="calendar-settings__week-holder">
+                                <div class="calendar-settings__prev-week">
+                                    <a class="calendar-settings__change-week" onclick="setPrevWeek()">
+                                        <img class="calendar-settings__week-img" src="img/calendar/left-arrow.svg"
+                                             alt="Предыдущая неделя">
+                                    </a>
+                                </div>
+
+                                <div class="calendar-settings__current-week">
+                                </div>
+
+                                <div class="calendar-settings__next-week">
+                                    <a class="calendar-settings__change-week" onclick="setNextWeek()">
+                                        <img class="calendar-settings__week-img" src="img/calendar/right-arrow.svg"
+                                             alt="Предыдущая неделя">
+                                    </a>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="calendar-settings__week-holder">
-                            <div class="calendar-settings__prev-week">
-                                <a class="calendar-settings__change-week" onclick="setPrevWeek()">
-                                    <img class="calendar-settings__week-img" src="img/calendar/left-arrow.svg"
-                                         alt="Предыдущая неделя">
-                                </a>
-                            </div>
-
-                            <div class="calendar-settings__current-week">
-                            </div>
-
-                            <div class="calendar-settings__next-week">
-                                <a class="calendar-settings__change-week" onclick="setNextWeek()">
-                                    <img class="calendar-settings__week-img" src="img/calendar/right-arrow.svg"
-                                         alt="Предыдущая неделя">
-                                </a>
-                            </div>
-
-                        </div>
                         <div class="calendar-settings__week-variant">
-                            <div class="calendar-settings__week">
-                                <input class="calendar-settings__submit" type="submit" value="Неделя" id="set-all-week"
-                                       onclick="displayAllWeek()"/>
+                            <div class="">
+                                <input class="calendar-settings__week calendar-settings__submit" type="submit"
+                                       value="Неделя" id="set-all-week" onclick="displayAllWeek()"/>
                             </div>
-                            <div class="calendar-settings__workweek">
-                                <input class="calendar-settings__submit" type="submit" value="Рабочая неделя"
-                                       id="set-workweek" onclick="displayWorkWeek()"/>
+                            <div>
+                                <input class="calendar-settings__submit calendar-settings__workweek" type="submit"
+                                       value="Рабочая неделя" id="set-workweek" onclick="displayWorkWeek()"/>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="calendar-settings__create-event">
-                    <div class="calendar-settings__workweek">
+                    <div>
                         <input class="calendar-settings__create-button" type="submit" value="Создать событие"
                                onclick="toggleCalendarShow()"/>
                     </div>
@@ -202,7 +205,8 @@
                         </div>
                         <div class="add-event__form-item">
                             <label for="description" class="add-event__form-label">Описание события*</label>
-                            <input type="text" name="description" id="description" class="add-event__form-input" required/>
+                            <input type="text" name="description" id="description" class="add-event__form-input"
+                                   required/>
                         </div>
                         <div class="add-event__form-item">
                             <label for="date" class="add-event__form-label">Дата события*</label>

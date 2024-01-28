@@ -393,9 +393,11 @@ function displayEvent(event) {
     let template = document.getElementById("calendar-event")
     let eventNode = template.content.cloneNode(true)
     let height = cell.offsetHeight * timeSlotsCount - 5
+    let width = cell.offsetWidth - 5
     // let height = document.defaultView.getComputedStyle(cell).height.slice(0, -2) * timeSlotsCount
 
     eventNode.children[0].style.setProperty("height", `${height}px`)
+    eventNode.children[0].style.setProperty("width", `${width}px`)
     eventNode.children[0].innerHTML = event.description
     cell.appendChild(eventNode)
 }

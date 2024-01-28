@@ -1,7 +1,6 @@
 .calendar-settings {
     display: flex;
     justify-content: space-between;
-    width: 95%;
     max-width: 80vw;
     margin-left: 100px;
 }
@@ -22,12 +21,16 @@
     margin-bottom: 10px;
     align-items: baseline;
     /*width: 100%;*/
-    max-width: 60vw;
+    /*max-width: 60vw;*/
 }
 
 .calendar-settings__second {
     justify-content: space-between;
     margin-bottom: 30px;
+}
+
+.calendar-settings__second-half {
+    display: flex;
 }
 
 .calendar-settings__item {
@@ -98,7 +101,7 @@
 }
 
 .calendar-settings__create-button {
-    margin: 30px 20px;
+    margin: 30px 20px 30px 10px;
     height: 3rem;
     border: 1px solid black;
     border-radius: 5px;
@@ -107,4 +110,60 @@
 
 .calendar-settings__create-button:hover {
     background: #d6d6d6;
+}
+
+@media screen and (max-width: 1100px) {
+    /*.calendar-settings__submit {*/
+    /*    width: 7rem;*/
+    /*}*/
+
+    .calendar-settings__today {
+        width: 6rem;
+    }
+
+    .calendar-settings__week {
+        width: 6rem;
+    }
+
+    .calendar-settings__workweek {
+        width: 7.6rem;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .calendar-settings {
+        margin-left: 30px;
+    }
+
+    .calendar-settings__apply {
+        width: 6rem;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .calendar-settings__second {
+        flex-direction: column;
+        margin-left: auto;
+        align-items: center;
+    }
+
+    .calendar-settings__second-half {
+        margin-bottom: 20px;
+    }
+
+    .calendar-settings__timing, .calendar-settings__choose-master {
+        margin-right: 15px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .calendar-settings {
+        max-width: 95vw;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .calendar-settings__create-button {
+        margin-right: 10px;
+    }
 }
