@@ -121,11 +121,6 @@
                             <div class="calendar-settings__start-time">
                                 <label>
                                     <select id="start-time" class="calendar-settings__select">
-                                        <option class="calendar-settings__option">0:00</option>
-                                        <option class="calendar-settings__option">1:00</option>
-                                        <option class="calendar-settings__option">2:00</option>
-                                        <option class="calendar-settings__option">3:00</option>
-                                        <option class="calendar-settings__option">11:00</option>
                                     </select>
                                 </label>
                             </div>
@@ -133,11 +128,6 @@
                                 <label>
                                     <select id="end-time" class="calendar-settings__select">
                                         <option class="calendar-settings__option">23:00</option>
-                                        <option class="calendar-settings__option">0:00</option>
-                                        <option class="calendar-settings__option">1:00</option>
-                                        <option class="calendar-settings__option">2:00</option>
-                                        <option class="calendar-settings__option">3:00</option>
-                                        <option class="calendar-settings__option">11:00</option>
                                     </select>
                                 </label>
                             </div>
@@ -259,7 +249,6 @@
             <template id="calendar-day-cell">
                 <th class="calendar__day"></th>
             </template>
-
             <template id="calendar-first-half">
                 <th class="calendar__item-hour"></th>
             </template>
@@ -276,11 +265,13 @@
                     <th class="calendar__item-half calendar__time"></th>
                 </tr>
             </template>
-
             <template id="calendar-event">
                 <div class="calendar__event">
                     Это потом надо удалить
                 </div>
+            </template>
+            <template id="calendar-option">
+                <option class="calendar-settings__option"></option>
             </template>
 
 

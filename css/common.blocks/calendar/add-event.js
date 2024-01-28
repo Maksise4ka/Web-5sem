@@ -1,17 +1,10 @@
-function getCurrentTimeRange() {
-    // TODO
+function getCurrentTimeRangeDeprecated() {
+    // TODO Это будет в calendar
     return ["0:00", "23:00"]
 }
 
-function isWorkWeek() {
-    // TODO
-}
-
-//TODO
 function findRelevantTs(start, dayNumber) {
-    let cell= document.getElementById(`${start}_${dayNumber}`)
-
-    return cell
+    return document.getElementById(`${start}_${dayNumber}`)
 }
 
 /**
@@ -36,7 +29,8 @@ function calculateTimeSlotCount(startMinute, endMinute) {
 //     "end": ""
 // }
 function displayEvent(event) {
-    let timeRange = getCurrentTimeRange().map(convertTimeToMinutes)
+    // TODO будем это делать в calendar
+    let timeRange = getCurrentTimeRangeDeprecated().map(convertTimeToMinutes)
     let rangeStart = timeRange[0]
     let rangeEnd = timeRange[1]
 
@@ -92,6 +86,7 @@ document.querySelector(".add-event__create-button").addEventListener("click", ev
         return false
     }
 
+    event.preventDefault()
     let start = document.getElementById("event-start").value
     let end = document.getElementById("event-end").value
     if (convertTimeToMinutes(start) >= convertTimeToMinutes(end)) {
@@ -99,7 +94,6 @@ document.querySelector(".add-event__create-button").addEventListener("click", ev
         return false
     }
 
-    event.preventDefault()
     let newEvent = {
         "id": events.length + 1,
         "customer": document.getElementById("name").value,
@@ -112,4 +106,5 @@ document.querySelector(".add-event__create-button").addEventListener("click", ev
     events.push(newEvent)
     localStorage.setItem("events", JSON.stringify(events))
     toggleCalendarShow()
+    location.reload();
 })

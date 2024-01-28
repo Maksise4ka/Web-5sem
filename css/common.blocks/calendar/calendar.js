@@ -16,8 +16,109 @@ function getCurrentDate() {
     return new Date(date)
 }
 
+/**
+ * Возвращает временной диапазон календаря из query string, или [0, 23] если его там нет
+ * @returns {number[]} - массив из двух элементов, начальный и конечный час
+ */
+function getCurrentTimeRange() {
+    function parseHour(urlParams, param, defaultHour) {
+        let hour = urlParams.get(param)
+        if (hour === null)
+            return defaultHour
+
+        hour = Number(hour)
+        if (Number.isNaN(hour))
+            return defaultHour
+
+        return hour
+    }
+
+    let urlParams = new URLSearchParams(window.location.search)
+    let start = Math.max(parseHour(urlParams, "start", 0), 0)
+    let end = Math.min(parseHour(urlParams, "end", 23), 23)
+
+    return [start, end]
+}
+
+/**
+ * Возвращает true, если есть параметр work-week в query string, означающий, отображать ли рабочую неделю
+ * @returns {boolean} - отображать ли рабочую неделю
+ */
+function isWorkWeek() {
+    let urlParams = new URLSearchParams(window.location.search)
+    let isWorkWeek = urlParams.get("work-week")
+
+    return !(isWorkWeek === null || isWorkWeek !== "true");
+}
+
+/**
+ * Возвращает даты, равные датам понедельника и воскресенья недели date
+ * @param date - дата, относительно которой ищется пн и вск
+ * @returns {Date[]} - пн и вск
+ */
+function getWeekRange(date) {
+    let day = date.getDay()
+    // так как тут британское исчисление недели
+    if (day === 0)
+        day = 6
+    else
+        day = day - 1
+
+    let firstWeekDay = new Date(new Date(new Date(date.getTime()).setDate(date.getDate() - day)).setHours(0, 0, 0, 0))
+    let lastWeekDay = new Date(new Date(new Date(date.getTime()).setDate(date.getDate() + 7 - day - 1)).setHours(23, 59, 59, 999))
+    return [firstWeekDay, lastWeekDay]
+}
+
+/**
+ * Проверяет что входная дата относится к текущей неделе
+ * @param date - входная дата
+ * @returns {boolean} - true, если относится
+ */
+function isDateInThisWeek(date) {
+    let range = getWeekRange(new Date())
+    let firstDay = range[0].getTime()
+    let secondDay = range[1].getTime()
+    let dateTime = date.getTime()
+
+    return firstDay <= dateTime && secondDay >= dateTime
+}
+
+function dateToString(date) {
+    return new Date(date.getTime() - new Date().getTimezoneOffset() * 60 * 1000).toISOString().split('T')[0]
+}
+
+// TODO: потом добавить мастеров
+function prepareQueryString(start, end, date, workWeek) {
+    let defaultRange = getCurrentTimeRange()
+
+    if (start === null)
+        start = defaultRange[0]
+    if (end === null)
+        end = defaultRange[1]
+    if (date === null)
+        date = getCurrentDate()
+    if (workWeek === null)
+        workWeek = isWorkWeek()
+
+    let urlParams = new URLSearchParams()
+    if (start !== 0)
+        urlParams.set("start", start)
+
+    if (end !== 23)
+        urlParams.set("end", end)
+
+    if (!isDateInThisWeek(date))
+        urlParams.set("date", dateToString(date))
+
+    if (workWeek)
+        urlParams.set("work-week", true.toString())
+
+    return urlParams.toString()
+}
+
 function setToday() {
-    window.location.assign(window.location.pathname)
+    let queryString = prepareQueryString(null, null, new Date(), null)
+    window.location.assign(window.location.pathname + `?${queryString}`)
 }
 
 function setNextWeek() {
@@ -31,12 +132,13 @@ function setPrevWeek() {
 /**
  * На сколько нужно сдвинуть календарь относительно текущей отображаемой даты
  * @param offset - сдвиг
- * @constructor - какой конструктор?
  */
 function MoveToDays(offset) {
     let currentDate = getCurrentDate()
-    let nextWeekDate = new Date(currentDate.setDate(currentDate.getDate() + offset)).toISOString().split('T')[0]
-    window.location.assign(window.location.pathname + `?date=${nextWeekDate}`)
+    let nextWeekDate = new Date(currentDate.setDate(currentDate.getDate() + offset))
+
+    let queryString = prepareQueryString(null, null, nextWeekDate, null)
+    window.location.assign(window.location.pathname + `?${queryString}`)
 }
 
 /**
@@ -140,9 +242,9 @@ function displayCurrentWeekRange(date) {
         return weekDate.toLocaleString('default', {month: 'long'})
     }
 
-    let day = date.getDay()
-    let firstWeekDay = new Date(new Date(date.getTime()).setDate(date.getDate() - day + 1))
-    let lastWeekDay = new Date(new Date(date.getTime()).setDate(date.getDate() + 7 - day))
+    let dayRange = getWeekRange(date)
+    let firstWeekDay = dayRange[0]
+    let lastWeekDay = dayRange[1]
 
     let element = document.querySelector(".calendar-settings__current-week")
     element.innerHTML = MonthLocale(firstWeekDay) === MonthLocale(lastWeekDay) ?
@@ -155,14 +257,17 @@ function displayCurrentWeekRange(date) {
  * @param date - текущая дата
  */
 function markCurrentWeekday(date) {
-    const millisInDay = 1000 * 60 * 60 * 24
-    let now = Math.floor(new Date().getTime() / millisInDay)
-
-    if (now !== Math.floor(date.getTime() / millisInDay))
+    if (!isDateInThisWeek(date))
         return
 
-    let day = date.getDay()
-    let weekRow = document.getElementById(`calendar-weekday-${day - 1}`);
+    // так тут британское исчисление недели
+    let day = new Date().getDay()
+    day = day === 0 ? 6 : day - 1
+
+    let weekRow = document.getElementById(`calendar-weekday-${day}`);
+    if (weekRow === null)
+        return
+
     weekRow.classList.add("calendar__current-weekday")
 }
 
@@ -179,47 +284,37 @@ function displayCalendar(startHour, endHour, daysCount, date) {
     displayDaysRow(daysCount)
     displayCalendarRows(startHour, endHour, daysCount)
     markCurrentWeekday(date)
+    markCurrentWeekButton(daysCount)
 }
 
-function toggleClicked(initiatorId, disabledId) {
-    document.getElementById(initiatorId).classList.toggle('calendar__settings-button-clicked')
+function markCurrentWeekButton(daysCount) {
+    let buttonId = daysCount === 5 ? "set-workweek" : "set-all-week"
+    document.getElementById(buttonId).classList.add('calendar__settings-button-clicked')
 
-    if (isClicked(disabledId))
-        document.getElementById(disabledId).classList.remove('calendar__settings-button-clicked')
 }
 
-function isClicked(id) {
-    return document.getElementById(id).classList.contains('calendar__settings-button-clicked')
+/**
+ * Отображает рабочую неделю (без сб и вс) в заданном часовом диапазоне
+ */
+function displayWorkWeek() {
+    let queryString = prepareQueryString(null, null, null, true)
+    window.location.assign(window.location.pathname + `?${queryString}`)
 }
 
-function displayWorkWeek(start, end) {
-    let startHour = start === undefined ? 0 : start
-    let endHour = end === undefined ? 23 : end
-
-    if (isClicked('set-workweek'))
-        return
-
-    displayCalendar(startHour, endHour, 5, getCurrentDate())
-    toggleClicked('set-workweek', 'set-all-week')
-}
-
-function displayAllWeek(start, end) {
-    let startHour = start === undefined ? 0 : start
-    let endHour = end === undefined ? 23 : end
-
-    if (isClicked('set-all-week'))
-        return
-
-    displayCalendar(startHour, endHour, 7, getCurrentDate())
-    toggleClicked('set-all-week', 'set-workweek')
-}
-
-function getTimeById(id) {
-    let select = document.getElementById(id)
-    return Number(select.value.split(':')[0])
+/**
+ * Отображает всю неделю в заданном часовом диапазоне
+ */
+function displayAllWeek() {
+    let queryString = prepareQueryString(null, null, null, false)
+    window.location.assign(window.location.pathname + `?${queryString}`)
 }
 
 function ApplyDate() {
+    function getTimeById(id) {
+        let select = document.getElementById(id)
+        return Number(select.value.split(':')[0])
+    }
+
     let start = getTimeById("start-time")
     let end = getTimeById("end-time")
 
@@ -238,22 +333,23 @@ function Apply() {
         return
     }
 
-    let currentClicked = document.querySelector(".calendar__settings-button-clicked").id
-    if (currentClicked === "set-all-week")
-        displayCalendar(start, end, 7, getCurrentDate())
-    else
-        displayCalendar(start, end, 5, getCurrentDate())
+    let queryString = prepareQueryString(start, end, null, null)
+    window.location.assign(window.location.pathname + `?${queryString}`)
 }
 
 // TODO
-// function displayEvents() {
-//     function filter
-//
-//     let events = JSON.parse(localStorage.getItem("events"))
-//     if (events === null)
-//         events = []
-//
-// }
+/**
+ * Отображает события, которые попадают в заданный диапазон календаря
+ */
+function displayEvents() {
+    function filterEvents() {
+    }
+
+    let events = JSON.parse(localStorage.getItem("events"))
+    if (events === null)
+        events = []
+
+}
 
 (() => {
     function displayOptions(selectId, start, end) {
@@ -270,6 +366,13 @@ function Apply() {
     displayOptions("start-time", 0, 24)
     displayOptions("end-time", 0, 23)
 
-    // TODO
-    displayAllWeek()
+    let date = getCurrentDate()
+    let range = getCurrentTimeRange()
+    if (isWorkWeek())
+        displayCalendar(range[0], range[1], 5, date)
+    else
+        displayCalendar(range[0], range[1], 7, date)
+
+    // TODO добавить отображение ивентов
+    // TODO добавить master в query string (желательно массив)
 })()
