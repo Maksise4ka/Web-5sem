@@ -38,6 +38,7 @@ document.querySelector(".add-event__create-button").addEventListener("click", ev
     let newEvent = {
         "id": events.length + 1,
         "customer": document.getElementById("name").value,
+        "description": document.getElementById("description").value,
         "master": document.getElementById("event-master").value,
         "date": document.getElementById("date").value,
         "start": start,

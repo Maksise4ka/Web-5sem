@@ -226,17 +226,8 @@ function displayDaysRow(daysCount) {
 }
 
 /**
- * Полностью удаляет календарь с страницы
- */
-function cleanCalendar() {
-    let table = document.querySelector(".calendar__table");
-
-    while (table.childNodes.length !== 0)
-        table.childNodes.forEach(child => child.remove())
-}
-
-/**
  * Отображает крайние даты недели (от понедельника до воскресенья)
+ * @param date - дата, относительно которой будеут считаться крайние даты
  */
 function displayCurrentWeekRange(date) {
     function MonthLocale(weekDate) {
@@ -281,7 +272,6 @@ function markCurrentWeekday(date) {
  */
 function displayCalendar(startHour, endHour, daysCount, date) {
     displayCurrentWeekRange(date)
-    cleanCalendar()
     displayDaysRow(daysCount)
     displayCalendarRows(startHour, endHour, daysCount)
     markCurrentWeekday(date)
@@ -406,12 +396,12 @@ function displayEvent(event) {
     // let height = document.defaultView.getComputedStyle(cell).height.slice(0, -2) * timeSlotsCount
 
     eventNode.children[0].style.setProperty("height", `${height}px`)
+    eventNode.children[0].innerHTML = event.description
     cell.appendChild(eventNode)
 }
 
-// TODO добавить описание события
 (() => {
-    function displayOptions(selectId, start, end) {
+    function displayOptions(selectId, start, end, withHalf = false) {
         let label = document.getElementById(selectId)
         let template = document.getElementById("calendar-option")
         for (let i = start; i < end; ++i) {
@@ -419,11 +409,19 @@ function displayEvent(event) {
             label.appendChild(child)
             child = label.lastElementChild
             child.innerHTML = `${i}:00`
+            if (withHalf) {
+                let child = template.content.cloneNode(true)
+                label.appendChild(child)
+                child = label.lastElementChild
+                child.innerHTML = `${i}:30`
+            }
         }
     }
 
     displayOptions("start-time", 0, 24)
     displayOptions("end-time", 0, 23)
+    displayOptions("event-start", 0, 24, true)
+    displayOptions("event-end", 0, 24, true)
 
     let date = getCurrentDate()
     let range = getCurrentTimeRange()
