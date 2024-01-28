@@ -348,7 +348,13 @@ function convertTimeToMinutes(time) {
     return units[0] * 60 + units[1]
 }
 
-// TODO
+function getWeekday(date) {
+    let day = date.getDay()
+    day = day === 0 ? 6 : day - 1
+
+    return day
+}
+
 /**
  * Отображает события, которые попадают в заданный диапазон календаря
  */
@@ -358,6 +364,8 @@ function displayEventsWithFilter() {
     function filterEvent(event) {
         let date = new Date(event["date"])
         if (!isDateInThisWeek(date, getCurrentDate()))
+            return false
+        if (isWorkWeek() && getWeekday(new Date(event.date)) >= 5)
             return false
 
         let eventStart = convertTimeToMinutes(event.start)
@@ -389,7 +397,8 @@ function displayEvent(event) {
     let timeSlotsCount = calculateTimeSlotCount(eventStart, eventEnd)
     // let timeSlotsCount = 5
 
-    let cell = findRelevantTs(event.start, 1) // TODO
+    let day = getWeekday(new Date(event.date))
+    let cell = findRelevantTs(event.start, day)
 
     let template = document.getElementById("calendar-event")
     let eventNode = template.content.cloneNode(true)

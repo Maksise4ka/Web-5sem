@@ -1,5 +1,4 @@
-.main-content {
-    /*TODO: add modifier*/
+.main-content__calendar {
     flex-direction: column;
 }
 
@@ -75,7 +74,6 @@ table{
     background: #bebebe;
     border-radius: 5px;
     margin-top: -0.9rem;
-    width: 100px; /* TODO*/
     height: 100px;
 }
 
