@@ -29,6 +29,10 @@
     align-items: flex-start;
 }
 
+.settings__form {
+    width: 100%;
+}
+
 .settings__item {
     margin: 20px 0 0 0;
     width: 85%;
@@ -61,6 +65,16 @@
     font-size: 0.9rem;
     font-family: inherit;
     background-color: #d6d6d6;
+}
+
+input[type="password"] {
+    font: small-caption;
+    font-size: 1rem;
+}
+
+.settings__toggle-password {
+    margin-left: -30px;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 550px) {
