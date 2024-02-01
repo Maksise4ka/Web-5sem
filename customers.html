@@ -111,7 +111,7 @@
             <section class="customers-menu customers-menu__grid">
                 <div class="customers-menu__navigation customers-menu__navigation__grid">
                     <input type="submit" class="customers-menu__add-button customers-menu__add-button__grid"
-                           value="Добавить клиента" onclick="toggleCustomerShow()"/>
+                           value="Добавить клиента"/>
                     <label class="customers-menu__find-label customers-menu__find-label__grid">
                         <input type="text" placeholder="Поиск по Ф.И.О., номеру телефона, email"
                                class="customers-menu__find"/>
@@ -156,7 +156,7 @@
                     <div class="add-customer__title">
                         Добавить пользователя
                     </div>
-                    <div class="add-customer__close-button" onclick="toggleCustomerShow()">
+                    <div class="add-customer__close-button">
                         <img class="add-customer__close-icon" src="img/add-customer/cross.svg" alt="Закрыть">
                     </div>
                 </div>
@@ -217,7 +217,7 @@
 
     <div class="layout-overlay"></div>
 </div>
-<script src="css/common.blocks/add-customer/add-customer.js"></script>
+<script type="module" src="css/common.blocks/add-customer/add-customer.js"></script>
 <script src="css/common.blocks/menu/activate-menu-item.js"></script>
 <script src="css/common.blocks/footing/load-time.js"></script>
 </body>
