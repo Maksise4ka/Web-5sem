@@ -133,20 +133,20 @@
                             </div>
                         </div>
                         <div class="calendar-settings__item">
-                            <input class="calendar-settings__submit calendar-settings__apply" type="submit" value="Применить" onclick="Apply()"/>
+                            <input class="calendar-settings__submit calendar-settings__apply" type="submit" value="Применить" />
                         </div>
                     </div>
 
                     <div class="calendar-settings__row calendar-settings__second">
                         <div class="calendar-settings__second-half">
                             <div>
-                                <input class="calendar-settings__submit calendar-settings__today" type="submit"
-                                       value="Сегодня" onclick="setToday()"/>
+                                <input id ="set-today" class="calendar-settings__submit calendar-settings__today" type="submit"
+                                       value="Сегодня" />
                             </div>
 
                             <div class="calendar-settings__week-holder">
                                 <div class="calendar-settings__prev-week">
-                                    <a class="calendar-settings__change-week" onclick="setPrevWeek()">
+                                    <a id="set-prev-week" class="calendar-settings__change-week">
                                         <img class="calendar-settings__week-img" src="img/calendar/left-arrow.svg"
                                              alt="Предыдущая неделя">
                                     </a>
@@ -156,7 +156,7 @@
                                 </div>
 
                                 <div class="calendar-settings__next-week">
-                                    <a class="calendar-settings__change-week" onclick="setNextWeek()">
+                                    <a id="set-next-week" class="calendar-settings__change-week">
                                         <img class="calendar-settings__week-img" src="img/calendar/right-arrow.svg"
                                              alt="Предыдущая неделя">
                                     </a>
@@ -167,19 +167,18 @@
                         <div class="calendar-settings__week-variant">
                             <div class="">
                                 <input class="calendar-settings__week calendar-settings__submit" type="submit"
-                                       value="Неделя" id="set-all-week" onclick="displayAllWeek()"/>
+                                       value="Неделя" id="set-all-week" />
                             </div>
                             <div>
                                 <input class="calendar-settings__submit calendar-settings__workweek" type="submit"
-                                       value="Рабочая неделя" id="set-workweek" onclick="displayWorkWeek()"/>
+                                       value="Рабочая неделя" id="set-workweek"/>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="calendar-settings__create-event">
                     <div>
-                        <input class="calendar-settings__create-button" type="submit" value="Создать событие"
-                               onclick="toggleCalendarShow()"/>
+                        <input class="calendar-settings__create-button" type="submit" value="Создать событие"/>
                     </div>
                 </div>
             </section>
@@ -193,7 +192,7 @@
                     <div class="add-event__title">
                         Создать событие
                     </div>
-                    <div class="add-event__close-button" onclick="toggleCalendarShow()">
+                    <div class="add-event__close-button">
                         <img class="add-event__close-icon" src="img/add-customer/cross.svg" alt="Закрыть">
                     </div>
                 </div>
@@ -302,8 +301,9 @@
     <div class="layout-overlay"></div>
 </div>
 
+<script type="module" src="css/common.blocks/calendar/display-event.js"></script>
 <script type="module" src="css/common.blocks/calendar/calendar.js"></script>
-<script src="css/common.blocks/calendar/add-event.js"></script>
+<script type="module" src="css/common.blocks/calendar/add-event.js"></script>
 <script src="css/common.blocks/menu/activate-menu-item.js"></script>
 <script src="css/common.blocks/footing/load-time.js"></script>
 </body>

@@ -16,6 +16,11 @@ function timeToMinutes(time) {
     return units[0] * 60 + units[1]
 }
 
+(() => {
+    document.querySelector(".add-event__close-button").addEventListener('click', toggleCalendarShow)
+    document.querySelector(".calendar-settings__create-button").addEventListener('click', toggleCalendarShow)
+})()
+
 document.querySelector(".add-event__create-button").addEventListener("click", event => {
 
     let events = JSON.parse(localStorage.getItem("events"))
