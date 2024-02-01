@@ -24,7 +24,7 @@ function getTotalPages() {
     if (currentPage === 0 || Number.isNaN(currentPage) || currentPage > getTotalPages())
         currentPage = 1
 
-    displayPagination(currentPage)
+    displayPagination(currentPage, getTotalPages())
 
     window.addEventListener('load', function () {
         if (currentPage <= getFetchPages()) {
@@ -34,16 +34,6 @@ function getTotalPages() {
         }
     })
 })()
-
-function clearPagination() {
-    document.querySelector(".pagination-list").childNodes.forEach(child => {
-        if (child.classList !== undefined) {
-            if (child.classList.contains("pagination__item")) {
-                child.remove()
-            }
-        }
-    })
-}
 
 function generatePages(totalPages, currentPage, bound) {
     let pages = []
@@ -62,11 +52,8 @@ function generatePages(totalPages, currentPage, bound) {
     return pages
 }
 
-function displayPagination(currentPage) {
-    clearPagination()
-
+function displayPagination(currentPage, totalPages) {
     let bound = 2
-    let totalPages = getTotalPages()
     let pages = generatePages(totalPages, currentPage, bound)
 
     let paginationList = document.querySelector(".pagination-list")
@@ -90,35 +77,6 @@ function displayPagination(currentPage) {
 
 function changePage(pageNumber) {
     window.location.replace(`${window.location.origin}${window.location.pathname}?page=${pageNumber}`)
-
-    // displayPagination(pageNumber)
-    //
-    // document.querySelectorAll(".pagination__item").forEach(e => {
-    //     if (Number(e.innerHTML) === pageNumber) {
-    //         e.classList.add("pagination__item__active")
-    //     } else {
-    //         e.classList.remove("pagination__item__active")
-    //     }
-    // })
-    //
-    // clearCustomers()
-    // hideError()
-    // if (pageNumber <= getFetchPages()) {
-    //     fetchCustomers(pageNumber)
-    // } else {
-    //     displayFromLocalStorage()
-    // }
-}
-
-function clearCustomers() {
-    let customersMenu = document.getElementById("customers-menu")
-    customersMenu.childNodes.forEach(child => {
-        if (child.classList !== undefined) {
-            if (child.classList.contains("customer")) {
-                child.remove()
-            }
-        }
-    })
 }
 
 function displayError() {
