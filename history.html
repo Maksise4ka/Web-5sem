@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>История</title>
+
+    <link href="css/style.css" rel="stylesheet">
+
+    <link href="css/common.blocks/menu/menu.css" rel="stylesheet">
+    <link href="css/common.blocks/unfold-menu/unfold-button.css" rel="stylesheet">
+    <link href="css/common.blocks/menu/menu__collapse.css" rel="stylesheet">
+    <link href="css/common.blocks/menu/menu__fold.css" rel="stylesheet">
+    <link href="css/common.blocks/unfold-menu/menu__unfold.css" rel="stylesheet">
+
+    <link href="css/common.blocks/heading/heading.css" rel="stylesheet">
+
+    <link href="css/common.blocks/main-content/main-content.css" rel="stylesheet">
+    <link href="css/common.blocks/history/history-settings.css" rel="stylesheet">
+    <link href="css/common.blocks/history/history.css" rel="stylesheet">
+    <link href="css/common.blocks/pagination/pagination.css" rel="stylesheet">
+
+    <link href="css/common.blocks/footing/footing.css" rel="stylesheet">
+    <link href="css/common.blocks/contacts.css" rel="stylesheet">
+
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+    <script src="css/common.blocks/menu/collapse-menu.js"></script>
+    <script src="css/common.blocks/heading/show_dropdown.js"></script>
+    <script src="css/common.blocks/unfold-menu/unfold-menu.js"></script>
+</head>
+<body>
+<div class="layout">
+    <nav class="menu menu__fold" id="menu">
+        <div class="menu__company-name">
+            <strong id="content">Boldёж</strong>
+        </div>
+        <a class="menu__collapse-button display-button" onclick="collapseMenu()" id="fold-menu">
+            <img class="menu__collapse-icon" src="img/menu/left_arrow.svg" alt="свернуть">
+        </a>
+
+        <a class="menu__collapse-button" onclick="collapseMenu()" id="unfold-menu">
+            <img class="menu__collapse-icon" src="img/menu/right_arrow.svg" alt="развернуть">
+        </a>
+
+        <div class="menu__nav">
+            <a class="menu__item menu__first-item" href="index.html">
+                <img class="menu__item-icon menu__item-icon__fold" src="img/menu/home.svg" alt=""/>
+                <div class="menu__item-description menu__item-description__fold">Главная</div>
+            </a>
+            <a class="menu__item" href="calendar.html">
+                <img class="menu__item-icon menu__item-icon__fold" src="img/menu/calendar.svg" alt=""/>
+                <div class="menu__item-description menu__item-description__fold">Календарь</div>
+            </a>
+            <a class="menu__item" href="customers.html">
+                <img class="menu__item-icon menu__item-icon__fold" src="img/menu/people.svg" alt="">
+                <div class="menu__item-description menu__item-description__fold">Клиенты</div>
+            </a>
+            <a class="menu__item">
+                <img class="menu__item-icon menu__item-icon__fold" src="img/menu/statistics.svg" alt="">
+                <div class="menu__item-description menu__item-description__fold">Статистика</div>
+            </a>
+            <a class="menu__item" href="history.html">
+                <img class="menu__item-icon menu__item-icon__fold" src="img/menu/history.svg" alt="">
+                <div class="menu__item-description menu__item-description__fold">История</div>
+            </a>
+            <a class="menu__item" href="settings.html">
+                <img class="menu__item-icon menu__item-icon__fold" src="img/menu/settings.svg" alt="">
+                <div class="menu__item-description menu__item-description__fold">Настройки</div>
+            </a>
+        </div>
+    </nav>
+
+    <div class="layout-content">
+        <header class="heading">
+            <div class="unfold-button unfold-button__margin" onclick="unfoldMenu()">
+                <img class="unfold-menu__button" src="img/menu/navigation.svg" alt="Меню">
+            </div>
+            <a href="index.html" class="heading__logotype heading__logotype__hide">
+                <img class="heading__logotype-img" src="img/heading/logo.png" alt="Логотип">
+            </a>
+            <div class="heading__profile-layout">
+                <div class="heading__profile" onclick="showDropdown()">
+                    <div class="heading__profile-info">
+                        <div class="heading__profile-name">
+                            <strong>Миша Ганин</strong>
+                        </div>
+                        <div class="heading__profile-role">
+                            <em>Админ</em>
+                        </div>
+                    </div>
+                    <img class="heading__profile-pic" src="img/heading/MishaGanin.png" alt="Фото профиля">
+                    <img class="heading__unfold-button" src="img/heading/arrow_down.svg" alt="Подробнее">
+                </div>
+                <div class="heading__dropdown">
+                    <a class="heading__dropdown-item" href="login.html">
+                        <div>
+                            <img class="heading__dropdown-pic" src="img/heading/exit.svg" alt="Выход"/>
+                        </div>
+                        <div class="heading__dropdown-item-name">
+                            Выход
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="history-layout">
+                <section class="history-settings">
+
+                </section>
+                <section class="history">
+                    <div class="history__table">
+                        <div class="history__row">
+                            <div class="history__cell history__cell-description">Название</div>
+                            <div class="history__cell history__cell-status">Статус</div>
+                            <div class="history__cell history__cell-master">Мастер</div>
+                            <div class="history__cell history__cell-date">Дата</div>
+                            <div class="history__cell history__cell-id">Id</div>
+                            <div class="history__cell history__cell-client">Клиент</div>
+                        </div>
+                        <div class="history__row">
+                            <div class="history__cell history__cell-description">Маникюр большого пальца левой ноги</div>
+                            <div class="history__cell history__cell-status">В процессе</div>
+                            <div class="history__cell history__cell-master">Эмин Керимов</div>
+                            <div class="history__cell history__cell-date">24-01-2024 10:00-11:00</div>
+                            <div class="history__cell history__cell-id">1000000</div>
+                            <div class="history__cell history__cell-client">Памела Андерсон</div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="pagination">
+                    <ul class="pagination-list">
+                        <template id="pagination__item-template">
+                            <li class="pagination__item"></li>
+                        </template>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footing footing__direction">
+            <div class="footing__left">
+                <div class="footing__item footing__item__margin contacts">
+                    Контакты
+                    <div class="contacts__items">
+                        <a href="tel:+7 (777) 777-77-77">
+                            <img class="contacts__icon" src="img/footing/call.svg" alt="телефон">
+                        </a>
+                        <a href="mailto:for_maxim@bk.ru">
+                            <img class="contacts__icon" src="img/footing/email.svg" alt="email">
+                        </a>
+                    </div>
+                </div>
+                <a class="footing__item footing__item__margin footing__tech-support" href="tech-support.html">
+                    Тех поддержка
+                </a>
+                <div class="footing__item footing_page-load" id="page-load"></div>
+            </div>
+            <div class="footing__item footing__item__margin footing__agreement footing__agreement__centered">
+                Пользовательское соглашение
+            </div>
+        </footer>
+    </div>
+
+    <div class="layout-overlay"></div>
+</div>
+<script type="module" src="css/common.blocks/history/history.js"></script>
+<script src="css/common.blocks/menu/activate-menu-item.js"></script>
+<script src="css/common.blocks/footing/load-time.js"></script>
+</body>
+</html>

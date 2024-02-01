@@ -1,0 +1,38 @@
+.history-layout {
+    margin: 40px 10px 40px 40px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.history {
+    width: 100%;
+    /*display: grid;*/
+
+}
+
+.history__table {
+    /*display: flex;*/
+    width: 100%;
+    /*flex-direction: column;*/
+
+    display: grid;
+    grid-template-columns: auto;
+    /*grid-template-columns: 3fr repeat(5, 1fr);*/
+    grid-template-rows: 40px repeat(10, 1fr);
+}
+
+.history__row {
+    display: grid;
+    flex: 1;
+    grid-template-columns: 3fr repeat(5, 1fr);
+    grid-template-rows: auto;
+}
+
+.history__cell {
+    /*padding: 8px;*/
+    border: 1px solid #ccc;
+    text-align: center;
+    /*box-sizing: border-box;*/
+}
