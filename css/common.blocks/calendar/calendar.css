@@ -27,10 +27,14 @@ table{
     border-collapse: collapse;
 }
 
-.calendar__day {
-    max-width: 100px;
+.calendar__cell {
+    /*max-width: 100px;*/
     min-width: 100px;
+    /*width: 100px;*/
     /*TODO*/
+}
+
+.calendar__day {
     text-align: center;
     border: 2px solid black;
 }

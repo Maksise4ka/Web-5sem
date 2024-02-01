@@ -245,22 +245,22 @@
                 </tr>
             </template>
             <template id="calendar-day-cell">
-                <th class="calendar__day"></th>
+                <th class="calendar__cell calendar__day"></th>
             </template>
             <template id="calendar-first-half">
-                <th class="calendar__item-hour"></th>
+                <th class="calendar__cell calendar__item-hour"></th>
             </template>
             <template id="calendar-second-half">
-                <th class="calendar__item-half"></th>
+                <th class="calendar__cell calendar__item-half"></th>
             </template>
             <template id="calendar-row-first">
                 <tr class="calendar__row">
-                    <th class="calendar__item-hour calendar__time-content calendar__time"></th>
+                    <th class="calendar__cell calendar__item-hour calendar__time-content calendar__time"></th>
                 </tr>
             </template>
             <template id="calendar-row-second">
                 <tr class="calendar__row">
-                    <th class="calendar__item-half calendar__time"></th>
+                    <th class="calendar__cell calendar__item-half calendar__time"></th>
                 </tr>
             </template>
             <template id="calendar-event">
@@ -301,7 +301,8 @@
 
     <div class="layout-overlay"></div>
 </div>
-<script src="css/common.blocks/calendar/calendar.js"></script>
+
+<script type="module" src="css/common.blocks/calendar/calendar.js"></script>
 <script src="css/common.blocks/calendar/add-event.js"></script>
 <script src="css/common.blocks/menu/activate-menu-item.js"></script>
 <script src="css/common.blocks/footing/load-time.js"></script>
